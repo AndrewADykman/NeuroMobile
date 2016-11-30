@@ -28,22 +28,26 @@ import tensorflow as tf
 
 from caffe_classes import class_names
 
-train_x = zeros((1, 227, 227, 3)).astype(float32)
+"NEED TO EDIT THESE"
+image_dim = (500, 500)
+
+train_x = zeros((1, image_dim[0], image_dim[1], 3)).astype(float32)
 train_y = zeros((1, 1000))
 xdim = train_x.shape[1:]
 ydim = train_y.shape[1]
 
-################################################################################
-# Read Image
+"NEED TO IMPORT IMAGES"
 
-
-im1 = (imread("poodle.png")[:, :, :3]).astype(float32)
-im1 = im1 - mean(im1)
-
-im2 = (imread("laska.png")[:, :, :3]).astype(float32)
-im2 = im2 - mean(im2)
-
-################################################################################
+# ################################################################################
+# # Read Image
+#
+# im1 = (imread("poodle.png")[:, :, :3]).astype(float32)
+# im1 = im1 - mean(im1)
+#
+# im2 = (imread("laska.png")[:, :, :3]).astype(float32)
+# im2 = im2 - mean(im2)
+#
+# ################################################################################
 
 # (self.feed('data')
 #         .conv(11, 11, 96, 4, 4, padding='VALID', name='conv1')
@@ -62,7 +66,6 @@ im2 = im2 - mean(im2)
 
 
 net_data = load("bvlc_alexnet.npy").item()
-
 
 def conv(input, kernel, biases, k_h, k_w, c_o, s_h, s_w, padding="VALID", group=1):
     '''From https://github.com/ethereon/caffe-tensorflow
@@ -199,6 +202,7 @@ s_w = 2;
 padding = 'VALID'
 maxpool5 = tf.nn.max_pool(conv5, ksize=[1, k_h, k_w, 1], strides=[1, s_h, s_w, 1], padding=padding)
 
+""" old FC layers from alexnet used for classification, no longer in use
 # fc6
 # fc(4096, name='fc6')
 fc6W = tf.Variable(net_data["fc6"][0])
@@ -221,12 +225,14 @@ fc8 = tf.nn.xw_plus_b(fc7, fc8W, fc8b)
 # softmax(name='prob'))
 prob = tf.nn.softmax(fc8)
 
+"""
+
 init = tf.initialize_all_variables()
 sess = tf.Session()
 sess.run(init)
 
 t = time.time()
-output = sess.run(prob, feed_dict={x: [im1, im2]})
+output = sess.run(maxpool5, feed_dict={x: [im1, im2]})
 ################################################################################
 
 # Output:
