@@ -2,11 +2,11 @@ import tensorflow as tf
 import numpy as np
 from data_classes import AlexTrData, RawTrData
 
-"""GET DATA FROM ALEXNET PORTION -- ALEXNET outputs 13 x 13 x 256 """
+"""GET DATA FROM ALEXNET PORTION -- ALEXNET outputs 13 x 13 x 256 and reshape"""
+alex_data = tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))])
+control_data = #TODO
 
-hidden_size = 1000
-
-#initialize slightly positive random variables
+#define functions for initializing slightly positive random variables (TF_VARIABLES)
 def weight_variable(shape):
   initial = tf.truncated_normal(shape, stddev=0.1)
   return tf.Variable(initial)
@@ -15,15 +15,17 @@ def bias_variable(shape):
   initial = tf.constant(0.1, shape=shape)
   return tf.Variable(initial)
 
+#define our placeholder variables for defining the symbolic expression to diff
+input_size = 13*13*256
+x = tf.placeholder(tf.float32, shape=[None, input_size])
+y_data = tf.placeholder(tf.float32, shape=[None, 2])
+
 #run it through several FC dense layers
 fc6_hidden_size = 1000
-fc6_input_size = 13*13*256
-fc6W = weight_variable([fc6_input_size, fc6_hidden_size])
+fc6W = weight_variable([input_size, fc6_hidden_size])
 fc6b = bias_variable([fc6_hidden_size])
 
-#what if we reshape before inputting
-hpool = tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))])
-fc6 = tf.nn.relu(tf.matmul(hpool, fc6W) + fc6b)
+fc6 = tf.nn.relu(tf.matmul(x, fc6W) + fc6b)
 
 #run it through several FC dense layers
 fc7_hidden_size = 100
@@ -36,21 +38,29 @@ fc7 = tf.nn.relu(tf.matmul(fc6, fc7W) + fc7b)
 keep_prob = tf.placeholder(tf.float32)
 fc7_drop = tf.nn.dropout(fc7, keep_prob)
 
-#our custom activation function that outputs it some desirable range, some sigmoid probs
-def sigma(x):
-    return tf.div(tf.constant(1.0),
-                  tf.add(tf.constant(1.0), tf.exp(tf.neg(x))))
+#final readout layer (2 output nodes, dYaw and dx)
+y_W = weight_variable([fc7_hidden_size, 2])
+y_B = bias_variable([2])
 
-#time to train!
-#get trainingData, a list of data as RawTrData
-ppTD = []
-#to push thru CNN, stop it from being for'd
-for inst in trainingData:
-  ppTD.append(inst.getAlexTrData())
-  #preprocesses all of the sets thru the AlexCNN
+y_pred = tf.matmul(fc7_drop, y_W) + y_B
 
-#training:
-##pulls mini-batches randomly (with replacement)
+#define loss function
+squared_loss = tf.reduce_mean(tf.square(y_pred - y_data))
+
+#define training step
+train_step = tf.train.AdamOptimizer(1e-4).minimize(squared_loss)
+
+#additional formulas for logging accuracy
+correct_prediction = tf.equal(tf.argmax(y_pred,1), tf.argmax(y_data,1))
+accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+
+#start the Tensorflow session and initialize variables
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
+
+"""
+this might not be the most efficient way to get batches. from Andrew:
+
 numTrainingExamples = len(ppTD)
 miniBatchSize = 10
 miniBatchNums = []
@@ -60,28 +70,27 @@ while len(miniBatchNum) < miniBatchSize:
   if num not in miniBatchNums:
     miniBatchNums.append(num)
     miniBatch.append(ppTD[num])
-##compute differences
-##compute gradient
-##descend
-##GOTO start
+"""
 
+#for some number of iterations
 
+miniBatchSize = 10
 
-#this is tutorial code from tensorflow.com. we will want to change this to do least squares regression (or logistic) instead
-cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(y_conv, y_))
-train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
-correct_prediction = tf.equal(tf.argmax(y_conv,1), tf.argmax(y_,1))
-accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-sess.run(tf.global_variables_initializer())
 for i in range(20000):
-  batch = mnist.train.next_batch(50)
-  if i%100 == 0:
-    train_accuracy = accuracy.eval(feed_dict={
-        x:batch[0], y_: batch[1], keep_prob: 1.0})
-    print("step %d, training accuracy %g"%(i, train_accuracy))
-  train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob: 0.5})
+    #draw random mini-batches, TODO still need to do sampling without replacement tho
+    x_samples = tf.random_uniform(miniBatchSize, 0, alex_data.get_shape()[0])
+    y_samples = tf.random_uniform(miniBatchSize, 0, control_data.get_shape()[0])
+    x_batch = alex_data[x_samples]
+    y_batch = control_data[y_samples]
 
-print("test accuracy %g"%accuracy.eval(feed_dict={
-    x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0}))
+    #every 100 iterations print accuracy
+    if i%100 == 0:
+        train_accuracy = accuracy.eval(feed_dict={
+            x: x_batch, y_data: y_batch, keep_prob: 1.0})
+        print("step %d, training accuracy %g" % (i, train_accuracy))
+
+    #train
+    train_step.run(feed_dict={x: x_batch, y_data: y_batch, keep_prob: 0.5})
+
 
 
