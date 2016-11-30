@@ -78,10 +78,9 @@ miniBatchSize = 10
 
 for i in range(20000):
     #draw random mini-batches, TODO still need to do sampling without replacement tho
-    x_samples = tf.random_uniform(miniBatchSize, 0, alex_data.get_shape()[0])
-    y_samples = tf.random_uniform(miniBatchSize, 0, control_data.get_shape()[0])
-    x_batch = alex_data[x_samples]
-    y_batch = control_data[y_samples]
+    samples = tf.random_uniform(miniBatchSize, 0, alex_data.get_shape()[0])
+    x_batch = alex_data[samples]
+    y_batch = control_data[samples]
 
     #every 100 iterations print accuracy
     if i%100 == 0:
