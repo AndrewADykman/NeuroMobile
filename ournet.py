@@ -18,15 +18,16 @@ def bias_variable(shape):
 fc6_hidden_size = 1000
 fc6_input_size = 13*13*256
 fc6W = weight_variable([fc6_input_size, fc6_hidden_size])
-fc6b = bias_variable([hidden_size])
+fc6b = bias_variable([fc6_hidden_size])
 
 #what if we reshape before inputting
 hpool = tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))])
 fc6 = tf.nn.relu(tf.matmul(hpool, fc6W) + fc6b)
 
 #run it through several FC dense layers
-fc7W = weight_variable([13 * 13 * 256, hidden_size])
-fc7b = bias_variable([hidden_size])
+fc7_hidden_size = 100
+fc7W = weight_variable([fc6_hidden_size, fc7_hidden_size])
+fc7b = bias_variable([fc7_hidden_size])
 
 fc7 = tf.nn.relu(tf.matmul(fc6, fc7W) + fc7b)
 
@@ -40,7 +41,19 @@ def sigma(x):
                   tf.add(tf.constant(1.0), tf.exp(tf.neg(x))))
 
 #time to train!
-#this is tutorial code from tensorflow.com. we will want to change this to do least squares regression instead
+#preprocess all of the sets thru the AlexCNN
+##create object with member variables convData and twist
+#create large batch of member variables
+#training:
+##pull mini-batches randomly (with replacement)
+##compute differences
+##compute gradient
+##descend
+##GOTO start
+
+
+
+#this is tutorial code from tensorflow.com. we will want to change this to do least squares regression (or logistic) instead
 cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(y_conv, y_))
 train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
 correct_prediction = tf.equal(tf.argmax(y_conv,1), tf.argmax(y_,1))
