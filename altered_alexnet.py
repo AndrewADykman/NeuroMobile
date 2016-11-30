@@ -48,13 +48,13 @@ class AlexCNN:
             conv = tf.concat(3, output_groups)
         return tf.reshape(tf.nn.bias_add(conv, biases), [-1] + conv.get_shape().as_list()[1:])
 
-    def __init__(self):
+    def __init__(self, stored_weights, image_size = (500, 500, 3)):
 
         #set dimension of our image (500 x 500 x 3 for RGB)
-        image_dim = (500, 500, 3)
+        image_dim = image_size
 
         #load weights
-        net_data = load("bvlc_alexnet.npy").item()
+        net_data = stored_weights
 
         #create placeholder variable
         self.x = tf.placeholder(tf.float32, (None,) + image_dim)
@@ -180,6 +180,6 @@ class AlexCNN:
 
     def runDict(self, image_data):
         t = time.time()
-        self.output = self.sess.run(self.maxpool5, feed_dict={self.x: image_data})  # alter this?
+        self.output = self.sess.run(self.maxpool5, feed_dict={self.x: image_data})
 
         return self.output
