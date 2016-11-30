@@ -1,4 +1,5 @@
 import tensorflow as tf
+import numpy as np
 
 """GET DATA FROM ALEXNET PORTION -- ALEXNET outputs 13 x 13 x 256 """
 
@@ -14,9 +15,12 @@ def bias_variable(shape):
   return tf.Variable(initial)
 
 #run it through several FC dense layers
-fc6W = weight_variable([13 * 13 * 256, hidden_size])
+fc6_hidden_size = 1000
+fc6_input_size = 13*13*256
+fc6W = weight_variable([fc6_input_size, fc6_hidden_size])
 fc6b = bias_variable([hidden_size])
 
+#what if we reshape before inputting
 hpool = tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))])
 fc6 = tf.nn.relu(tf.matmul(hpool, fc6W) + fc6b)
 
