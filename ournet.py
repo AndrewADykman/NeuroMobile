@@ -44,6 +44,7 @@ def sigma(x):
 #time to train!
 #get trainingData, a list of data as RawTrData
 ppTD = []
+#to push thru CNN, stop it from being for'd
 for inst in trainingData:
   ppTD.append(inst.getAlexTrData())
   #preprocesses all of the sets thru the AlexCNN
