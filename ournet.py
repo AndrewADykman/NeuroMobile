@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+from data_classes import AlexTrData, RawTrData
 
 """GET DATA FROM ALEXNET PORTION -- ALEXNET outputs 13 x 13 x 256 """
 
@@ -41,11 +42,23 @@ def sigma(x):
                   tf.add(tf.constant(1.0), tf.exp(tf.neg(x))))
 
 #time to train!
-#preprocess all of the sets thru the AlexCNN
-##create object with member variables convData and twist
-#create large batch of member variables
+#get trainingData, a list of data as RawTrData
+ppTD = []
+for inst in trainingData:
+  ppTD.append(inst.getAlexTrData())
+  #preprocesses all of the sets thru the AlexCNN
+
 #training:
-##pull mini-batches randomly (with replacement)
+##pulls mini-batches randomly (with replacement)
+numTrainingExamples = len(ppTD)
+miniBatchSize = 10
+miniBatchNums = []
+miniBatch = []
+while len(miniBatchNum) < miniBatchSize:
+  num = np.random.randint(0, numTrainingExamples)
+  if num not in miniBatchNums:
+    miniBatchNums.append(num)
+    miniBatch.append(ppTD[num])
 ##compute differences
 ##compute gradient
 ##descend
