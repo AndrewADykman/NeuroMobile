@@ -8,7 +8,7 @@
 # Model from  https://github.com/BVLC/caffe/tree/master/models/bvlc_alexnet
 # Weights from Caffe converted using https://github.com/ethereon/caffe-tensorflow
 #
-#
+# Modified by Andrew Dykman and Allen Jiang, 2016
 ################################################################################
 
 import os
@@ -31,41 +31,13 @@ from caffe_classes import class_names
 "NEED TO EDIT THESE"
 image_dim = (500, 500)
 
-train_x = zeros((1, image_dim[0], image_dim[1], 3)).astype(float32)
-train_y = zeros((1, 1000))
-xdim = train_x.shape[1:]
-ydim = train_y.shape[1]
+#train_x = zeros((1, image_dim[0], image_dim[1], 3)).astype(float32)
+#train_y = zeros((1, 1000))
+#xdim = train_x.shape[1:]
+#ydim = train_y.shape[1]
 
 "NEED TO IMPORT IMAGES"
 
-# ################################################################################
-# # Read Image
-#
-# im1 = (imread("poodle.png")[:, :, :3]).astype(float32)
-# im1 = im1 - mean(im1)
-#
-# im2 = (imread("laska.png")[:, :, :3]).astype(float32)
-# im2 = im2 - mean(im2)
-#
-# ################################################################################
-
-# (self.feed('data')
-#         .conv(11, 11, 96, 4, 4, padding='VALID', name='conv1')
-#         .lrn(2, 2e-05, 0.75, name='norm1')
-#         .max_pool(3, 3, 2, 2, padding='VALID', name='pool1')
-#         .conv(5, 5, 256, 1, 1, group=2, name='conv2')
-#         .lrn(2, 2e-05, 0.75, name='norm2')
-#         .max_pool(3, 3, 2, 2, padding='VALID', name='pool2')
-#         .conv(3, 3, 384, 1, 1, name='conv3')
-#         .conv(3, 3, 384, 1, 1, group=2, name='conv4')
-#         .conv(3, 3, 256, 1, 1, group=2, name='conv5')
-#         .fc(4096, name='fc6')
-#         .fc(4096, name='fc7')
-#         .fc(1000, relu=False, name='fc8')
-#         .softmax(name='prob'))
-
-
-net_data = load("bvlc_alexnet.npy").item()
 
 def conv(input, kernel, biases, k_h, k_w, c_o, s_h, s_w, padding="VALID", group=1):
     '''From https://github.com/ethereon/caffe-tensorflow
@@ -88,6 +60,7 @@ def conv(input, kernel, biases, k_h, k_w, c_o, s_h, s_w, padding="VALID", group=
 class AlexCNN:
 
   def __init__():
+    net_data = load("bvlc_alexnet.npy").item()
     x = tf.placeholder(tf.float32, (None,) + xdim)
 
     # conv1
@@ -213,15 +186,4 @@ class AlexCNN:
   def runDict(self, feed_dict):
     t = time.time()
     output = sess.run(maxpool5, feed_dict={x: [im1, im2]})
-################################################################################
-
-# Output:
-
-
-for input_im_ind in range(output.shape[0]):
-    inds = argsort(output)[input_im_ind, :]
-    print "Image", input_im_ind
-    for i in range(5):
-        print class_names[inds[-1 - i]], output[input_im_ind, inds[-1 - i]]
-
-print time.time() - t
+    return output
