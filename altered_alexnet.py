@@ -176,14 +176,14 @@ class AlexCNN:
     s_h = 2;
     s_w = 2;
     padding = 'VALID'
-    maxpool5 = tf.nn.max_pool(conv5, ksize=[1, k_h, k_w, 1], strides=[1, s_h, s_w, 1], padding=padding)
+    self.maxpool5 = tf.nn.max_pool(conv5, ksize=[1, k_h, k_w, 1], strides=[1, s_h, s_w, 1], padding=padding)
 
 
     init = tf.initialize_all_variables()
-    sess = tf.Session()
-    sess.run(init)
+    self.sess = tf.Session()
+    self.sess.run(init)
 
   def runDict(self, feed_dict):
     t = time.time()
-    output = sess.run(maxpool5, feed_dict={x: [im1, im2]})
+    self.output = self.sess.run(self.maxpool5, feed_dict={x: [im1, im2]})#alter this?
     return output
