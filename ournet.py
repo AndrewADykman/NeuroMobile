@@ -15,6 +15,8 @@ print "finished pickles"
 num_batches = CNN_data.shape[0]
 input_size = int(np.prod(CNN_data.shape[1:]))
 
+twist = np.asarray(twist)
+
 #define functions for initializing slightly positive random variables (TF_VARIABLES)
 def weight_variable(shape):
   initial = tf.truncated_normal(shape, stddev=0.1)
@@ -89,6 +91,7 @@ miniBatchSize = 10
 for i in range(20000):
     #draw random mini-batches, TODO still need to do sampling without replacement tho
     samples = np.random.randint(0, num_batches, miniBatchSize)
+    print samples
     x_batch = CNN_data[samples]
     y_batch = twist[samples]
 
