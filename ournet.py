@@ -11,10 +11,9 @@ with open('twist.pickle','r') as g:
     twist = pickle.load(g)
 
 print "finished pickles"
-#make into TF tensor object
+
 num_batches = CNN_data.shape[0]
-CNN_data = tf.constant(CNN_data)
-input_size = int(np.prod(CNN_data.get_shape()[1:]))
+input_size = int(np.prod(CNN_data.shape[1:]))
 
 #define functions for initializing slightly positive random variables (TF_VARIABLES)
 def weight_variable(shape):
@@ -24,6 +23,8 @@ def weight_variable(shape):
 def bias_variable(shape):
   initial = tf.constant(0.1, shape=shape)
   return tf.Variable(initial)
+
+#CREATE GRAPH #############
 
 #define our placeholder variables for defining the symbolic expression to diff
 x = tf.placeholder(tf.float32, shape=[None, input_size])
@@ -87,12 +88,12 @@ miniBatchSize = 10
 
 for i in range(20000):
     #draw random mini-batches, TODO still need to do sampling without replacement tho
-    samples = tf.random_uniform(miniBatchSize, 0, num_batches)
+    samples = np.random.randint(0, num_batches, miniBatchSize)
     x_batch = CNN_data[samples]
     y_batch = twist[samples]
 
     #flatten x_batch
-    x_batch = tf.reshape(x_batch, [-1, int(np.prod(x_batch.get_shape()))])
+    x_batch = x_batch.flatten()
 
     #every 100 iterations print accuracy
     if i % 100 == 0:
