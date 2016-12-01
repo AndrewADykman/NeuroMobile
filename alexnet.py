@@ -9,8 +9,9 @@
 # Weights from Caffe converted using https://github.com/ethereon/caffe-tensorflow
 #
 #
-##################aqwq hg5  ##############################################################
+################################################################################
 
+from numpy import *
 import os
 from pylab import *
 import numpy as np
@@ -28,26 +29,22 @@ import tensorflow as tf
 
 from caffe_classes import class_names
 
-"NEED TO EDIT THESE"
-image_dim = (500, 500)
-
-train_x = zeros((1, image_dim[0], image_dim[1], 3)).astype(float32)
+train_x = zeros((1, 227, 227, 3)).astype(float32)
 train_y = zeros((1, 1000))
 xdim = train_x.shape[1:]
 ydim = train_y.shape[1]
 
-"NEED TO IMPORT IMAGES"
+################################################################################
+# Read Image
 
-# ################################################################################
-# # Read Image
-#
-# im1 = (imread("poodle.png")[:, :, :3]).astype(float32)
-# im1 = im1 - mean(im1)
-#
-# im2 = (imread("laska.png")[:, :, :3]).astype(float32)
-# im2 = im2 - mean(im2)
-#
-# ################################################################################
+
+im1 = (imread("poodle.png")[:, :, :3]).astype(float32)
+im1 = im1 - mean(im1)
+
+im2 = (imread("laska.png")[:, :, :3]).astype(float32)
+im2 = im2 - mean(im2)
+
+################################################################################
 
 # (self.feed('data')
 #         .conv(11, 11, 96, 4, 4, padding='VALID', name='conv1')
@@ -66,6 +63,7 @@ ydim = train_y.shape[1]
 
 
 net_data = load("bvlc_alexnet.npy").item()
+
 
 def conv(input, kernel, biases, k_h, k_w, c_o, s_h, s_w, padding="VALID", group=1):
     '''From https://github.com/ethereon/caffe-tensorflow
@@ -202,30 +200,27 @@ s_w = 2;
 padding = 'VALID'
 maxpool5 = tf.nn.max_pool(conv5, ksize=[1, k_h, k_w, 1], strides=[1, s_h, s_w, 1], padding=padding)
 
-""" old FC layers from alexnet used for classification, no longer in use
-# fc6
-# fc(4096, name='fc6')
-fc6W = tf.Variable(net_data["fc6"][0])
-fc6b = tf.Variable(net_data["fc6"][1])
-fc6 = tf.nn.relu_layer(tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))]), fc6W, fc6b)
-
-# fc7
-# fc(4096, name='fc7')
-fc7W = tf.Variable(net_data["fc7"][0])
-fc7b = tf.Variable(net_data["fc7"][1])
-fc7 = tf.nn.relu_layer(fc6, fc7W, fc7b)
-
-# fc8
-# fc(1000, relu=False, name='fc8')
-fc8W = tf.Variable(net_data["fc8"][0])
-fc8b = tf.Variable(net_data["fc8"][1])
-fc8 = tf.nn.xw_plus_b(fc7, fc8W, fc8b)
-
-# prob
-# softmax(name='prob'))
-prob = tf.nn.softmax(fc8)
-
-"""
+# # fc6
+# # fc(4096, name='fc6')
+# fc6W = tf.Variable(net_data["fc6"][0])
+# fc6b = tf.Variable(net_data["fc6"][1])
+# fc6 = tf.nn.relu_layer(tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))]), fc6W, fc6b)
+#
+# # fc7
+# # fc(4096, name='fc7')
+# fc7W = tf.Variable(net_data["fc7"][0])
+# fc7b = tf.Variable(net_data["fc7"][1])
+# fc7 = tf.nn.relu_layer(fc6, fc7W, fc7b)
+#
+# # fc8
+# # fc(1000, relu=False, name='fc8')
+# fc8W = tf.Variable(net_data["fc8"][0])
+# fc8b = tf.Variable(net_data["fc8"][1])
+# fc8 = tf.nn.xw_plus_b(fc7, fc8W, fc8b)
+#
+# # prob
+# # softmax(name='prob'))
+# prob = tf.nn.softmax(fc8)
 
 init = tf.initialize_all_variables()
 sess = tf.Session()
@@ -237,11 +232,12 @@ output = sess.run(maxpool5, feed_dict={x: [im1, im2]})
 
 # Output:
 
+print output.shape
 
-for input_im_ind in range(output.shape[0]):
-    inds = argsort(output)[input_im_ind, :]
-    print "Image", input_im_ind
-    for i in range(5):
-        print class_names[inds[-1 - i]], output[input_im_ind, inds[-1 - i]]
-
-print time.time() - t
+# for input_im_ind in range(output.shape[0]):
+#     inds = argsort(output)[input_im_ind, :]
+#     print "Image", input_im_ind
+#     for i in range(5):
+#         print class_names[inds[-1 - i]], output[input_im_ind, inds[-1 - i]]
+#
+# print time.time() - t
