@@ -106,6 +106,3 @@ for i in range(20000):
 
     #train
     train_step.run(feed_dict={x: x_batch, y_data: y_batch, keep_prob: 0.5})
-
-
-
