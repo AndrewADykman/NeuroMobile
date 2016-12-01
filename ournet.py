@@ -1,10 +1,19 @@
 import tensorflow as tf
 import numpy as np
+import pickle
 from data_classes import AlexTrData, RawTrData
 
 """GET DATA FROM ALEXNET PORTION -- ALEXNET outputs 13 x 13 x 256 and reshape"""
-alex_data = tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))])
-control_data = #TODO
+
+with open('CNN_filters.pickle','rb') as f:
+    CNN_data = pickle.load(f)
+
+with open('twist.pickle','r') as g:
+    twist = pickle.load(g)
+
+#make into TF tensor object
+CNN_data = tf.constant(CNN_data)
+input_size = int(np.prod(CNN_data.get_shape()[1:]))
 
 #define functions for initializing slightly positive random variables (TF_VARIABLES)
 def weight_variable(shape):
@@ -16,7 +25,6 @@ def bias_variable(shape):
   return tf.Variable(initial)
 
 #define our placeholder variables for defining the symbolic expression to diff
-input_size = 13*13*256
 x = tf.placeholder(tf.float32, shape=[None, input_size])
 y_data = tf.placeholder(tf.float32, shape=[None, 2])
 
@@ -78,12 +86,15 @@ miniBatchSize = 10
 
 for i in range(20000):
     #draw random mini-batches, TODO still need to do sampling without replacement tho
-    samples = tf.random_uniform(miniBatchSize, 0, alex_data.get_shape()[0])
-    x_batch = alex_data[samples]
-    y_batch = control_data[samples]
+    samples = tf.random_uniform(miniBatchSize, 0, CNN_data.get_shape()[0])
+    x_batch = CNN_data[samples]
+    y_batch = twist[samples]
+
+    #flatten x_batch
+    x_batch = tf.reshape(x_batch, [-1, int(np.prod(x_batch.get_shape()))])
 
     #every 100 iterations print accuracy
-    if i%100 == 0:
+    if i % 100 == 0:
         train_accuracy = accuracy.eval(feed_dict={
             x: x_batch, y_data: y_batch, keep_prob: 1.0})
         print("step %d, training accuracy %g" % (i, train_accuracy))

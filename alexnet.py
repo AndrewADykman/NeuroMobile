@@ -24,25 +24,30 @@ import matplotlib.image as mpimg
 from scipy.ndimage import filters
 import urllib
 from numpy import random
-
+import pickle
 import tensorflow as tf
-
 from caffe_classes import class_names
 
-train_x = zeros((1, 227, 227, 3)).astype(float32)
-train_y = zeros((1, 1000))
-xdim = train_x.shape[1:]
-ydim = train_y.shape[1]
+# IMPORT IMAGES
+image_dim = (500, 500, 3)
+
+with open('images.pickle','r') as f:
+  images = pickle.load(f)
+
+with open('twist.pickle','r') as g:
+  twist = pickle.load(g)
 
 ################################################################################
-# Read Image
+# Read Image (OLD, USED FOR IMAGE BY IMAGE READING)
 
-
-im1 = (imread("poodle.png")[:, :, :3]).astype(float32)
-im1 = im1 - mean(im1)
-
-im2 = (imread("laska.png")[:, :, :3]).astype(float32)
-im2 = im2 - mean(im2)
+# im1 = (imread("ros_rover.png")[:, :, :3]).astype(float32)
+# im1 = im1 - mean(im1)
+#
+# # im1 = (imread("poodle.png")[:, :, :3]).astype(float32)
+# # im1 = im1 - mean(im1)
+# #
+# # im2 = (imread("laska.png")[:, :, :3]).astype(float32)
+# # im2 = im2 - mean(im2)
 
 ################################################################################
 
@@ -61,9 +66,7 @@ im2 = im2 - mean(im2)
 #         .fc(1000, relu=False, name='fc8')
 #         .softmax(name='prob'))
 
-
 net_data = load("bvlc_alexnet.npy").item()
-
 
 def conv(input, kernel, biases, k_h, k_w, c_o, s_h, s_w, padding="VALID", group=1):
     '''From https://github.com/ethereon/caffe-tensorflow
@@ -83,7 +86,7 @@ def conv(input, kernel, biases, k_h, k_w, c_o, s_h, s_w, padding="VALID", group=
     return tf.reshape(tf.nn.bias_add(conv, biases), [-1] + conv.get_shape().as_list()[1:])
 
 
-x = tf.placeholder(tf.float32, (None,) + xdim)
+x = tf.placeholder(tf.float32, (None,) + image_dim)
 
 # conv1
 # conv(11, 11, 96, 4, 4, padding='VALID', name='conv1')
@@ -108,7 +111,6 @@ lrn1 = tf.nn.local_response_normalization(conv1,
                                           alpha=alpha,
                                           beta=beta,
                                           bias=bias)
-
 # maxpool1
 # max_pool(3, 3, 2, 2, padding='VALID', name='pool1')
 k_h = 3;
@@ -227,12 +229,12 @@ sess = tf.Session()
 sess.run(init)
 
 t = time.time()
-output = sess.run(maxpool5, feed_dict={x: [im1, im2]})
+output = sess.run(maxpool5, feed_dict={x: images})
 ################################################################################
 
 # Output:
-
-print output.shape
+dump_file = open('CNN_filters.pickle', 'wb')
+pickle.dump(output, dump_file)
 
 # for input_im_ind in range(output.shape[0]):
 #     inds = argsort(output)[input_im_ind, :]
