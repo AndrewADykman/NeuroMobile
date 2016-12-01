@@ -1,7 +1,6 @@
 import tensorflow as tf
 import numpy as np
 import pickle
-from data_classes import AlexTrData, RawTrData
 
 """GET DATA FROM ALEXNET PORTION -- ALEXNET outputs 13 x 13 x 256 and reshape"""
 
@@ -11,7 +10,9 @@ with open('CNN_filters.pickle','rb') as f:
 with open('twist.pickle','r') as g:
     twist = pickle.load(g)
 
+print "finished pickles"
 #make into TF tensor object
+num_batches = CNN_data.shape[0]
 CNN_data = tf.constant(CNN_data)
 input_size = int(np.prod(CNN_data.get_shape()[1:]))
 
@@ -64,7 +65,7 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
 #start the Tensorflow session and initialize variables
 sess = tf.Session()
-sess.run(tf.global_variables_initializer())
+sess.run(tf.initialize_all_variables())
 
 """
 this might not be the most efficient way to get batches. from Andrew:
@@ -86,7 +87,7 @@ miniBatchSize = 10
 
 for i in range(20000):
     #draw random mini-batches, TODO still need to do sampling without replacement tho
-    samples = tf.random_uniform(miniBatchSize, 0, CNN_data.get_shape()[0])
+    samples = tf.random_uniform(miniBatchSize, 0, num_batches)
     x_batch = CNN_data[samples]
     y_batch = twist[samples]
 
