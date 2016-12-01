@@ -58,7 +58,7 @@ fc7_drop = tf.nn.dropout(fc7, keep_prob)
 y_W = weight_variable([fc7_hidden_size, 2])
 y_B = bias_variable([2])
 
-y_pred = tf.matmul(fc7_drop, y_W) + y_B
+y_pred = tf.tanh(tf.matmul(fc7_drop, y_W) + y_B)
 
 #define loss function
 squared_loss = tf.reduce_mean(tf.square(y_pred - y_data))
