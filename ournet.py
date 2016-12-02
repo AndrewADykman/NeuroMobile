@@ -2,9 +2,7 @@ import tensorflow as tf
 import numpy as np
 import pickle
 
-
-"""GET DATA FROM ALEXNET PORTION -- ALEXNET outputs 13 x 13 x 256 and reshape"""
-
+# OPEN PICKLED OUTPUT FROM ALEXNET
 with open('CNN_filters.pickle','rb') as f:
     CNN_data = pickle.load(f)
 
@@ -15,7 +13,6 @@ print "finished pickles"
 
 num_batches = CNN_data.shape[0]
 image_dim = CNN_data.shape[1:]
-print image_dim
 flatten_length = int(np.prod(CNN_data.shape[1:]))
 
 twist = np.asarray(twist)
@@ -59,7 +56,7 @@ fc7_drop = tf.nn.dropout(fc7, keep_prob)
 y_W = weight_variable([fc7_hidden_size, 2])
 y_B = bias_variable([2])
 
-y_pred = tf.tanh(tf.matmul(fc7_drop, y_W) + y_B)
+y_pred = tf.nn.softsign(tf.matmul(fc7_drop, y_W) + y_B)
 
 #define loss function
 squared_loss = tf.reduce_mean(tf.square(y_pred - y_data))
@@ -89,7 +86,7 @@ while len(miniBatchNum) < miniBatchSize:
 
 miniBatchSize = 10
 
-for i in range(20000):
+for i in range(1000):
     #draw random mini-batches, TODO still need to do sampling without replacement tho
     samples = np.random.randint(0, num_batches, miniBatchSize)
     x_batch = CNN_data[samples]
@@ -102,13 +99,25 @@ for i in range(20000):
         print "iteration: ", i, "loss: ", loss_val
 
 
+# SAVE DATA
+
+saver = tf.train.Saver([fc6W, fc6b, fc7W, fc7b, y_W, y_B])
+saver.save(sess, 'dnn_model')
+
+"""
 dnn_net_data = {}
 dnn_net_data['fc6'] = []
-dnn_net_data['fc6'].append('fc6W')
-dnn_net_data['fc6'].append('fc6b')
+dnn_net_data['fc6'].append(fc6W)
+dnn_net_data['fc6'].append(fc6b)
 
 dnn_net_data['fc7'] = []
-dnn_net_data['fc7'].append('fc7W')
-dnn_net_data['fc7'].append('fc7b')
+dnn_net_data['fc7'].append(fc7W)
+dnn_net_data['fc7'].append(fc7b)
+
+dnn_net_data['y'] = []
+dnn_net_data['y'].append(y_W)
+dnn_net_data['y'].append(y_B)
 
 np.save('dnn_net_data.npy', dnn_net_data)
+
+"""

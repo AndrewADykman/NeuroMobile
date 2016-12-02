@@ -1,14 +1,21 @@
 ################################################################################
 # Michael Guerzhoy and Davi Frossard, 2016
-# AlexNet implementation in TensorFlow, with weights
-# Details:
+# Edited by Andrew Dykman, Allen Jiang 2016
+#
+# AlexNet
+#
 # http://www.cs.toronto.edu/~guerzhoy/tf_alexnet/
 #
 # With code from https://github.com/ethereon/caffe-tensorflow
 # Model from  https://github.com/BVLC/caffe/tree/master/models/bvlc_alexnet
 # Weights from Caffe converted using https://github.com/ethereon/caffe-tensorflow
 #
+# HOW TO USE THIS:
 #
+# 1. Import image and twists from ROS
+# 2. Run this program
+# 3. Saves alexnet outputs (from the 5th convolutional layer) into a CNN_pickle.py file
+# 4. use that pickle to train the next DNN
 ################################################################################
 
 from numpy import *
@@ -28,7 +35,7 @@ import pickle
 import tensorflow as tf
 from caffe_classes import class_names
 
-# IMPORT IMAGES
+# IMPORT IMAGES FROM PICKLE FILE (ROS) #########################
 image_dim = (500, 500, 3)
 
 with open('images.pickle','r') as f:
@@ -37,42 +44,10 @@ with open('images.pickle','r') as f:
 with open('twist.pickle','r') as g:
   twist = pickle.load(g)
 
-################################################################################
-# Read Image (OLD, USED FOR IMAGE BY IMAGE READING)
-
-# im1 = (imread("ros_rover.png")[:, :, :3]).astype(float32)
-# im1 = im1 - mean(im1)
-#
-# # im1 = (imread("poodle.png")[:, :, :3]).astype(float32)
-# # im1 = im1 - mean(im1)
-# #
-# # im2 = (imread("laska.png")[:, :, :3]).astype(float32)
-# # im2 = im2 - mean(im2)
-
-################################################################################
-
-# (self.feed('data')
-#         .conv(11, 11, 96, 4, 4, padding='VALID', name='conv1')
-#         .lrn(2, 2e-05, 0.75, name='norm1')
-#         .max_pool(3, 3, 2, 2, padding='VALID', name='pool1')
-#         .conv(5, 5, 256, 1, 1, group=2, name='conv2')
-#         .lrn(2, 2e-05, 0.75, name='norm2')
-#         .max_pool(3, 3, 2, 2, padding='VALID', name='pool2')
-#         .conv(3, 3, 384, 1, 1, name='conv3')
-#         .conv(3, 3, 384, 1, 1, group=2, name='conv4')
-#         .conv(3, 3, 256, 1, 1, group=2, name='conv5')
-#         .fc(4096, name='fc6')
-#         .fc(4096, name='fc7')
-#         .fc(1000, relu=False, name='fc8')
-#         .softmax(name='prob'))
-
+# LOAD PRE-TRAINED WEIGHTS
 net_data = load("bvlc_alexnet.npy").item()
 
-try:
-    dnn_data = load('dnn_net_data.npy').item()
-except IOError:
-    print "gotta train the network first"
-
+# CONV FUNCTION
 def conv(input, kernel, biases, k_h, k_w, c_o, s_h, s_w, padding="VALID", group=1):
     '''From https://github.com/ethereon/caffe-tensorflow
     '''
@@ -91,6 +66,7 @@ def conv(input, kernel, biases, k_h, k_w, c_o, s_h, s_w, padding="VALID", group=
     return tf.reshape(tf.nn.bias_add(conv, biases), [-1] + conv.get_shape().as_list()[1:])
 
 
+# DEFINE GRAPH
 x = tf.placeholder(tf.float32, (None,) + image_dim)
 
 # conv1
