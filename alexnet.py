@@ -68,6 +68,11 @@ with open('twist.pickle','r') as g:
 
 net_data = load("bvlc_alexnet.npy").item()
 
+try:
+    dnn_data = load('dnn_net_data.npy').item()
+except IOError:
+    print "gotta train the network first"
+
 def conv(input, kernel, biases, k_h, k_w, c_o, s_h, s_w, padding="VALID", group=1):
     '''From https://github.com/ethereon/caffe-tensorflow
     '''
@@ -204,15 +209,15 @@ maxpool5 = tf.nn.max_pool(conv5, ksize=[1, k_h, k_w, 1], strides=[1, s_h, s_w, 1
 
 # # fc6
 # # fc(4096, name='fc6')
-# fc6W = tf.Variable(net_data["fc6"][0])
-# fc6b = tf.Variable(net_data["fc6"][1])
-# fc6 = tf.nn.relu_layer(tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))]), fc6W, fc6b)
+# fc6W = tf.Variable(dnn_data["fc6"][0])
+# fc6b = tf.Variable(dnn_data["fc6"][1])
+# fc6 = tf.nn.relu_layer(tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))]), fc6W, fc6b)this should work now?
 #
 # # fc7
 # # fc(4096, name='fc7')
-# fc7W = tf.Variable(net_data["fc7"][0])
-# fc7b = tf.Variable(net_data["fc7"][1])
-# fc7 = tf.nn.relu_layer(fc6, fc7W, fc7b)
+# fc7W = tf.Variable(dnn_data["fc7"][0])
+# fc7b = tf.Variable(dnn_data["fc7"][1])
+# fc7 = tf.nn.relu_layer(fc6, fc7W, fc7b)This should work now
 #
 # # fc8
 # # fc(1000, relu=False, name='fc8')
