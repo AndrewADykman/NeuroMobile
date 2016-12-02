@@ -1,0 +1,17 @@
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/clean_test_results.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/doxygen.dir
+/home/glanger1/catkin_ws/neuroMobile/build/gtest/CMakeFiles/gtest.dir
+/home/glanger1/catkin_ws/neuroMobile/build/gtest/CMakeFiles/gtest_main.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/joy_teleop.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/roscpp_generate_messages_cpp.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/roscpp_generate_messages_lisp.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/roscpp_generate_messages_py.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/run_tests.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/std_msgs_generate_messages_cpp.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/std_msgs_generate_messages_lisp.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/std_msgs_generate_messages_py.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/tests.dir
+/home/glanger1/catkin_ws/neuroMobile/build/CMakeFiles/twist_repub.dir

@@ -1,0 +1,6 @@
+set(neuroMobile_SETUP_PY_VERSION "0.0.0")
+set(neuroMobile_SETUP_PY_SCRIPTS "")
+set(neuroMobile_SETUP_PY_PACKAGES "neuroMobile")
+set(neuroMobile_SETUP_PY_PACKAGE_DIRS "src/neuroMobile")
+set(neuroMobile_SETUP_PY_MODULES "")
+set(neuroMobile_SETUP_PY_MODULE_DIRS "")

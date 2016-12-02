@@ -1,0 +1,2 @@
+.
+-DCATKIN_DEVEL_PREFIX=/home/glanger1/catkin_ws/neuroMobile/devel -DCMAKE_INSTALL_PREFIX=/home/glanger1/catkin_ws/neuroMobile/install
