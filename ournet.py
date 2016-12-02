@@ -2,6 +2,7 @@ import tensorflow as tf
 import numpy as np
 import pickle
 
+
 """GET DATA FROM ALEXNET PORTION -- ALEXNET outputs 13 x 13 x 256 and reshape"""
 
 with open('CNN_filters.pickle','rb') as f:
@@ -41,14 +42,14 @@ fc6_hidden_size = 1000
 fc6W = weight_variable([flatten_length, fc6_hidden_size])
 fc6b = bias_variable([fc6_hidden_size])
 
-fc6 = tf.nn.relu(tf.matmul(x_flat, fc6W) + fc6b)
+fc6 = tf.nn.relu(tf.matmul(x_flat, fc6W) + fc6b)#I think we should do this like in alexnet
 
 #run it through several FC dense layers
 fc7_hidden_size = 100
 fc7W = weight_variable([fc6_hidden_size, fc7_hidden_size])
 fc7b = bias_variable([fc7_hidden_size])
 
-fc7 = tf.nn.relu(tf.matmul(fc6, fc7W) + fc7b)
+fc7 = tf.nn.relu(tf.matmul(fc6, fc7W) + fc7b)#I think we should do this like in alexnet
 
 #apply dropout
 keep_prob = tf.placeholder(tf.float32)
@@ -101,4 +102,13 @@ for i in range(20000):
         print "iteration: ", i, "loss: ", loss_val
 
 
+dnn_net_data = {}
+dnn_net_data['fc6'] = []
+dnn_net_data['fc6'].append('fc6W')
+dnn_net_data['fc6'].append('fc6b')
 
+dnn_net_data['fc7'] = []
+dnn_net_data['fc7'].append('fc7W')
+dnn_net_data['fc7'].append('fc7b')
+
+np.save('dnn_net_data.npy', dnn_net_data)
