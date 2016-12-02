@@ -1,0 +1,8 @@
+prefix=/home/glanger1/catkin_ws/neuroMobile/install
+
+Name: neuroMobile
+Description: Description of neuroMobile
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/glanger1/catkin_ws/neuroMobile/install/lib 
+Requires: 

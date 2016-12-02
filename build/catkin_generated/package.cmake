@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "neuroMobile")
+set(neuroMobile_MAINTAINER "glanger1 <glanger1@todo.todo>")
+set(neuroMobile_DEPRECATED "")
+set(neuroMobile_VERSION "0.0.0")
+set(neuroMobile_BUILD_DEPENDS "roscpp" "rospy" "std_msgs")
+set(neuroMobile_RUN_DEPENDS "roscpp" "rospy" "std_msgs")
+set(neuroMobile_BUILDTOOL_DEPENDS "catkin")

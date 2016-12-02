@@ -1,0 +1,8 @@
+from distutils.core import setup
+
+setup(
+    version='...',
+    scripts=['bin/myscript'],
+    packages=['neuroMobile'],
+    package_dir={'': 'src'}
+)
