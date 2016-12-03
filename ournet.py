@@ -92,6 +92,7 @@ while len(miniBatchNum) < miniBatchSize:
     miniBatchNums.append(num)
     miniBatch.append(ppTD[num])
 """
+error_rates = [0.]*num_epochs
 for e in range(0, num_epochs):
 
     p = np.random.permutation(num_batches)
@@ -108,11 +109,14 @@ for e in range(0, num_epochs):
         _, loss_val = sess.run([train_step, squared_loss], feed_dict={x: x_batch, y_data: y_batch, keep_prob: dropout_rate})
 
     print "epoch: ", e, "loss: ", loss_val
+    error_rates[e] = loss_val
 
 # SAVE DATA
 
 saver = tf.train.Saver([fc6W, fc6b, fc7W, fc7b, y_W, y_B])
 saver.save(sess, 'dnn_model')
+
+np.save('error_rates_sigmoid.npy', error_rates)
 
 """
 dnn_net_data = {}
