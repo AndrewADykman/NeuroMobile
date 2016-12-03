@@ -2,6 +2,15 @@ import tensorflow as tf
 import numpy as np
 import pickle
 
+# DEFINE HYPERPARAMETERS
+
+#keep batch size small
+miniBatchSize = 5
+
+num_epochs = 500
+
+dropout_rate = 0.5
+
 # OPEN PICKLED OUTPUT FROM ALEXNET
 with open('CNN_filters.pickle','rb') as f:
     CNN_data = pickle.load(f)
@@ -11,10 +20,12 @@ with open('twist.pickle','r') as g:
 
 print "finished pickles"
 
+#get some dimensions
 num_batches = CNN_data.shape[0]
 image_dim = CNN_data.shape[1:]
 flatten_length = int(np.prod(CNN_data.shape[1:]))
 
+#convert twist to numpy array
 twist = np.asarray(twist)
 
 #define functions for initializing slightly positive random variables (TF_VARIABLES)
@@ -29,7 +40,7 @@ def bias_variable(shape):
 #CREATE GRAPH #############
 
 #define our placeholder variables for defining the symbolic expression to diff
-x = tf.placeholder(tf.float32, shape=(10, 14, 14, 256))
+x = tf.placeholder(tf.float32, shape=(miniBatchSize, 14, 14, 256))
 x_flat = tf.reshape(x, [-1, int(np.prod(x.get_shape()[1:]))])
 
 y_data = tf.placeholder(tf.float32, shape=[None, 2])
@@ -56,7 +67,7 @@ fc7_drop = tf.nn.dropout(fc7, keep_prob)
 y_W = weight_variable([fc7_hidden_size, 2])
 y_B = bias_variable([2])
 
-y_pred = tf.nn.softsign(tf.matmul(fc7_drop, y_W) + y_B)
+y_pred = tf.sigmoid(tf.matmul(fc7_drop, y_W) + y_B)
 
 #define loss function
 squared_loss = tf.reduce_mean(tf.square(y_pred - y_data))
@@ -81,23 +92,22 @@ while len(miniBatchNum) < miniBatchSize:
     miniBatchNums.append(num)
     miniBatch.append(ppTD[num])
 """
+for e in range(0, num_epochs):
 
-#for some number of iterations
+    p = np.random.permutation(num_batches)
+    shuffled_x = CNN_data[p]
+    shuffled_y = twist[p]
 
-miniBatchSize = 10
+    count = 0
+    while (count + miniBatchSize < num_batches):
+        x_batch = shuffled_x[count:(count+miniBatchSize)]
+        y_batch = shuffled_y[count:(count+miniBatchSize)]
+        count += miniBatchSize
+        #train
 
-for i in range(1000):
-    #draw random mini-batches, TODO still need to do sampling without replacement tho
-    samples = np.random.randint(0, num_batches, miniBatchSize)
-    x_batch = CNN_data[samples]
-    y_batch = twist[samples]
+        _, loss_val = sess.run([train_step, squared_loss], feed_dict={x: x_batch, y_data: y_batch, keep_prob: dropout_rate})
 
-    #train
-    _, loss_val = sess.run([train_step, squared_loss], feed_dict={x: x_batch, y_data: y_batch, keep_prob: 0.5})
-
-    if i % 100 == 0:
-        print "iteration: ", i, "loss: ", loss_val
-
+    print "epoch: ", e, "loss: ", loss_val
 
 # SAVE DATA
 

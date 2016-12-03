@@ -2,6 +2,11 @@ from numpy import *
 import tensorflow as tf
 import pickle
 
+"""Predictor class -- implements the entire graph structure of alexnet + ournet.py for the purpose
+of calculating predictions, given the loaded alexnet and ournet weights.
+
+TODO -- make this a lot better"""
+
 class Predictor:
 
     def __init__(self, net_data, dnn_net_data):
@@ -170,6 +175,7 @@ class Predictor:
         return self.sess.close()
 
 
+#MAIN SESSION------------------------------------
 
 #LOAD ALEXNET WEIGHTS
 net_data = load("bvlc_alexnet.npy").item()
