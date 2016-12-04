@@ -40,7 +40,7 @@ int main(int argc, char** argv)
 
   // advertise topic that this node will publish
   tf_vel =
-    node.advertise<geometry_msgs::Twist>("husky/cmd_vel", 10);
+    node.advertise<geometry_msgs::Twist>("/husky_velocity_controller/cmd_vel", 10);
 
   // subcscribe to joy topic
   ros::Subscriber sub = node.subscribe("joy", 10, &joyCallback);

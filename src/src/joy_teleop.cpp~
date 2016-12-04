@@ -21,7 +21,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 // heading driven by left joystick left and right
   command_velocity.angular.x  = 0;
   command_velocity.angular.y = 0;
-  command_velocity.angular.z = 1.0*joy->axes[3];
+  command_velocity.angular.z = 0.5*joy->axes[3];
 
   // publish the cmd vel
   tf_vel.publish(command_velocity);

@@ -34,7 +34,8 @@ robot model in Gazebo
     <param name="use_sim_time" value="true" />
 
     <!-- Send the Husky A200 Robot URDF/XACRO to param server -->
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find neuroMobile)/urdf/base.urdf.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find husky_description)/urdf/husky.urdf.xacro'" /> 
+<!-- old version was $(find neuroMobile)/urdf/base.urdf.xacro-->
 
     <!-- Spawn robot in gazebo -->
     <node name="spawn_husky_model" pkg="gazebo_ros" type="spawn_model" 

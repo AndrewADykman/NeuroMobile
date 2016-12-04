@@ -2,7 +2,7 @@
 <!--
 Software License Agreement (BSD)
 
-\file      husky_empty_world.launch
+\file      description.gazebo.xacro
 \authors   Paul Bovbel <pbovbel@clearpathrobotics.com, Devon Ash <dash@clearpathrobotics.com>
 \copyright Copyright (c) 2015, Clearpath Robotics, Inc., All rights reserved.
 
@@ -23,27 +23,23 @@ OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTE
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-<launch>
+<robot name="husky_robot_gazebo" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:arg name="laser_enabled" default="false" />
+  <xacro:arg name="ur5_enabled" default="false" />
+  <xacro:arg name="kinect_enabled" default="false" />
 
-  <arg name="world_name" default="worlds/empty.world"/>
+  <xacro:include filename="$(find husky_description)/urdf/husky.urdf.xacro" />
+  <xacro:include filename="$(find husky_gazebo)/urdf/husky.gazebo.xacro" />
 
-  <arg name="laser_enabled" default="false"/>
-  <arg name="ur5_enabled" default="true"/>
-  <arg name="kinect_enabled" default="false"/>
+  <!-- Gazebo plugin for ROS Control -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
 
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(arg world_name)"/> <!-- world_name is wrt GAZEBO_RESOURCE_PATH environment variable -->
-    <arg name="paused" value="false"/>
-    <arg name="use_sim_time" value="true"/>
-    <arg name="gui" value="true"/>
-    <arg name="headless" value="false"/>
-    <arg name="debug" value="false"/>
-  </include>
+  <xacro:husky_robot />
 
-  <include file="$(find neuroMobile)/launch/spawn_husky.launch">
-    <arg name="laser_enabled" value="$(arg laser_enabled)"/>
-    <arg name="ur5_enabled" value="$(arg ur5_enabled)"/>
-    <arg name="kinect_enabled" value="$(arg kinect_enabled)"/>
-  </include>
+  <xacro:husky_robot_gazebo />
 
-</launch>
+</robot>

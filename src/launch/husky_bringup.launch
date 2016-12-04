@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 
 <launch>
-    <include file="$(find neuroMobile)/launch/base.urdf.gazebo.launch"/>
+    <!-- <include file="$(find neuroMobile)/launch/base.urdf.gazebo.launch"/> -->
 
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <include file="$(find neuroMobile)/launch/husky_empty_world.launch">
 	<arg name ="world_name" value="$(find neuroMobile)/worlds/maze13.world"/>
     </include>
 
