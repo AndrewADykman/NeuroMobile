@@ -36,7 +36,7 @@ int main(int argc, char** argv)
   ros::NodeHandle node;
 
   // advertise topic that this node will publish
-  tf_vel = node.advertise<geometry_msgs::Twist>("husky/cmd_vel", 10);
+  tf_vel = node.advertise<geometry_msgs::Twist>("/husky_velocity_controller/cmd_vel", 10);
 
   // subcscribe to twist topic
   ros::Subscriber twistIn = node.subscribe("/NN_out/cmd_vel", 10, &twistCallback);
