@@ -7,7 +7,7 @@ import pickle
 #keep batch size small
 miniBatchSize = 5
 
-num_epochs = 500
+num_epochs = 50
 
 dropout_rate = 0.5
 
@@ -18,11 +18,9 @@ with open('CNN_filters.pickle','rb') as f:
 with open('twist.pickle','r') as g:
     twist = pickle.load(g)
 
-'''Testing stuff
-twist_temp =  np.array(twist)
-twist_temp[:,1] = (twist_temp[:,1] + .5)
+twist_temp = np.array(twist)
+twist_temp[:,1] = twist_temp[:,1] * 100
 twist = twist_temp.tolist()
-to see how it turns out'''
 
 print "finished pickles"
 
@@ -72,7 +70,7 @@ fc7_drop = tf.nn.dropout(fc7, keep_prob)
 y_W = weight_variable([fc7_hidden_size, 2])
 y_B = bias_variable([2])
 
-y_pred = tf.sigmoid(tf.matmul(fc7_drop, y_W) + y_B)
+y_pred = tf.matmul(fc7_drop, y_W) + y_B
 
 #define loss function
 squared_loss = tf.reduce_mean(tf.square(y_pred - y_data))
@@ -106,7 +104,7 @@ for e in range(0, num_epochs):
 # SAVE DATA
 
 saver = tf.train.Saver([fc6W, fc6b, fc7W, fc7b, y_W, y_B])
-saver.save(sess, 'dnn_model')
+saver.save(sess, 'dnn_model_lin_scaled')
 
-np.save('error_rates_sigmoid.npy', error_rates)
+np.save('error_rates_lin_scaled.npy', error_rates)
 
