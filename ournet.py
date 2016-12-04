@@ -33,7 +33,8 @@ flatten_length = int(np.prod(CNN_data.shape[1:]))
 
 #convert twist to numpy array, take only yaw
 twist = np.asarray(twist)[:, 1][:,None]
-twist = twist + 0.5 #change range from -0.5, 0.5 to 0, 1
+twist = twist * 100 #change range from -0.5, 0.5 to -50, 50
+twist = twist.tolist()
 
 #define functions for initializing slightly positive random variables (TF_VARIABLES)
 def weight_variable(shape, name):
