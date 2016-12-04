@@ -18,6 +18,12 @@ with open('CNN_filters.pickle','rb') as f:
 with open('twist.pickle','r') as g:
     twist = pickle.load(g)
 
+'''Testing stuff
+twist_temp =  np.array(twist)
+twist_temp[:,1] = (twist_temp[:,1] + .5)
+twist = twist_temp.tolist()
+to see how it turns out'''
+
 print "finished pickles"
 
 #get some dimensions
@@ -50,15 +56,14 @@ fc6_hidden_size = 1000
 fc6W = weight_variable([flatten_length, fc6_hidden_size])
 fc6b = bias_variable([fc6_hidden_size])
 
-fc6 = tf.nn.relu(tf.matmul(x_flat, fc6W) + fc6b)#I think we should do this like in alexnet
+fc6 = tf.nn.relu_layer(x_flat, fc6W, fc6b)
 
 #run it through several FC dense layers
 fc7_hidden_size = 100
 fc7W = weight_variable([fc6_hidden_size, fc7_hidden_size])
 fc7b = bias_variable([fc7_hidden_size])
 
-fc7 = tf.nn.relu(tf.matmul(fc6, fc7W) + fc7b)#I think we should do this like in alexnet
-
+fc7 = tf.nn.relu_layer(fc6, fc7W, fc7b)
 #apply dropout
 keep_prob = tf.placeholder(tf.float32)
 fc7_drop = tf.nn.dropout(fc7, keep_prob)
@@ -79,19 +84,6 @@ train_step = tf.train.AdamOptimizer(1e-4).minimize(squared_loss)
 sess = tf.Session()
 sess.run(tf.initialize_all_variables())
 
-"""
-this might not be the most efficient way to get batches. from Andrew:
-
-numTrainingExamples = len(ppTD)
-miniBatchSize = 10
-miniBatchNums = []
-miniBatch = []
-while len(miniBatchNum) < miniBatchSize:
-  num = np.random.randint(0, numTrainingExamples)
-  if num not in miniBatchNums:
-    miniBatchNums.append(num)
-    miniBatch.append(ppTD[num])
-"""
 error_rates = [0.]*num_epochs
 for e in range(0, num_epochs):
 
@@ -118,20 +110,3 @@ saver.save(sess, 'dnn_model')
 
 np.save('error_rates_sigmoid.npy', error_rates)
 
-"""
-dnn_net_data = {}
-dnn_net_data['fc6'] = []
-dnn_net_data['fc6'].append(fc6W)
-dnn_net_data['fc6'].append(fc6b)
-
-dnn_net_data['fc7'] = []
-dnn_net_data['fc7'].append(fc7W)
-dnn_net_data['fc7'].append(fc7b)
-
-dnn_net_data['y'] = []
-dnn_net_data['y'].append(y_W)
-dnn_net_data['y'].append(y_B)
-
-np.save('dnn_net_data.npy', dnn_net_data)
-
-"""
