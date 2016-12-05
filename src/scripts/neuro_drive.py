@@ -24,20 +24,22 @@ def image_cb(data):
 
     picture = data.data;
     picture = np.frombuffer(picture, np.uint8);
-    picture = np.reshape(picture,(500,500,3));
+    picture = np.reshape(picture,(250,250,3));
 
 #=====calling the neural network=====
     feed_list = [picture]
-    Yaw = predictor.run(predictionNet.prediction, feed_dict={predictionNet.x: feed_list}) / 100
+    (dX, dYaw) = predictor.run(predictionNet.prediction, feed_dict={predictionNet.x: feed_list}) 
+    dX /= 100.0
+    dYaw /= 100.0
     #======================================
 
-    xVel = 1;
+    xVel = dX
     yVel = 0;
     zVel = 0;
 
     R_dot = 0;
     P_dot = 0;
-    Y_dot = Yaw;
+    Y_dot = dYaw
 
     lin = Vector3(xVel,yVel,zVel);
     ang = Vector3(R_dot,P_dot,Y_dot);

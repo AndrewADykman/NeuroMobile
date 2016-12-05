@@ -36,14 +36,13 @@ import tensorflow as tf
 from caffe_classes import class_names
 
 # IMPORT IMAGES FROM PICKLE FILE (ROS) #########################
-image_dim = (500, 500, 3)
+image_dim = (250, 250, 3)
 
 with open('train_images.pickle','r') as f:
   images = pickle.load(f)
 
 with open('train_twists.pickle','r') as g:
   twist = pickle.load(g)
-
 
 
 # LOAD PRE-TRAINED WEIGHTS
@@ -225,7 +224,7 @@ for i in range(300, len(images), 300):
 ################################################################################
 
 # Output:
-with open('CNN_filters_train_mamba.pickle', 'wb') as dump_file:
+with open('CNN_filtered_train.pickle', 'wb') as dump_file:
     pickle.dump(output, dump_file)
 
 # for input_im_ind in range(output.shape[0]):

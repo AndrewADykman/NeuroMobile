@@ -10,7 +10,7 @@ TODO -- make this a lot better"""
 class Predictor:
 
     def __init__(self, net_data, dnn_net_data):
-        image_dim = (500, 500, 3)
+        image_dim = (250, 250, 3)
         self.x = tf.placeholder(tf.float32, (None,) + image_dim)
 
         # conv1
@@ -141,11 +141,16 @@ class Predictor:
 
         fc7 = tf.nn.relu(tf.matmul(fc6, fc7W) + fc7b)
 
+        fc8W = tf.Variable(dnn_net_data['fc8'][0])
+        fc8b = tf.Variable(dnn_net_data['fc8'][1])
+
+        fc8 = tf.nn.relu(tf.matmul(fc7, fc8W) + fc8b)
+
         # final readout layer (2 output nodes, dYaw and dx)
         y_W = tf.Variable(dnn_net_data['y'][0])
         y_B = tf.Variable(dnn_net_data['y'][1])
 
-        self.prediction = tf.matmul(fc7, y_W) + y_B
+        self.prediction = tf.matmul(fc8, y_W) + y_B
 
         self.sess = tf.Session()
         self.sess.run(tf.initialize_all_variables())
