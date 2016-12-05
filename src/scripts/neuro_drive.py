@@ -7,6 +7,7 @@ from geometry_msgs.msg import Vector3
 from sensor_msgs.msg import Image
 import numpy as np
 
+from predictnet import Predictor
 #=========================================================
 #import NEURAL_NETWORK as ASnjioknkmkkkkkkkkkkkkDF_NN
 #=========================================================
@@ -20,10 +21,11 @@ def image_cb(data):
     picture = np.reshape(picture,(500,500,3));
 
     #=====calling the neural network!!=====
-    [X,Yaw] = NN.predict(picture);
+    feed_list = [picture]
+    Yaw = predictor.run(predictionNet.prediction, feed_dict={predictionNet.x: feed_list}) / 100
     #======================================
 
-    xVel = X;
+    xVel = 1;
     yVel = 0;
     zVel = 0;
 
@@ -50,8 +52,13 @@ def main():
     # NN = new NN;
     # NN.loadWeights or initialize or whatever; 
     # =========================================================
+    net_data = load("blvc_alexnet.npy").item()
+    dnn_net_data = load("dnn_net_data.npy").item()
 
-
+    global predictionNet
+    predictionNet = Predictor(net_data, dnn_net_data)
+    global predictor
+    predictor = predictionNet.get_session()
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin();

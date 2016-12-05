@@ -190,11 +190,13 @@ with open('images.pickle','r') as f:
 with open('twist.pickle','r') as g:
   twist2 = pickle.load(g)
 
-images2 = images2[50:71]
-twist2 = asarray(twist2[50:71]) + 0.5
+images2 = images2
+twist2 = asarray(twist2) * 100
 
 #create our thing
 my_pred = Predictor(net_data, dnn_net_data)
+
+print shape(images2)
 
 for i in range(0, len(images2)):
     image = list()
