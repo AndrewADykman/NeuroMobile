@@ -13,7 +13,7 @@ args = parser.parse_args()
 with open(args.in_filename, 'r') as f:
   twists = pickle.load(f)
 
-new_twists = [[0.]*9]*len(twists)
+new_twists = np.zeros([len(twists), 9])
 
 j = 0
 for twist in twists:
@@ -24,11 +24,11 @@ for twist in twists:
     if dist < best_dist:
       best_dist = dist
       best_twist = i
-      print best_dist
-  print 'iteration: ' + str(j) + 'b_t: ' + str(i)
+  print 'iteration: ' + str(j) + 'b_t: ' + str(best_twist)
   new_twists[j][best_twist] = 1
+  print new_twists[j]
   j += 1
 
-
+print new_twists
 with open(args.out_filename, 'wb') as f:
   pickle.dump(new_twists, f)
