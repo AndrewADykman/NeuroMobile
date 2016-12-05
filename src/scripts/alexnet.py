@@ -44,7 +44,6 @@ with open('train_images.pickle','r') as f:
 with open('train_twists.pickle','r') as g:
   twist = pickle.load(g)
 
-
 # LOAD PRE-TRAINED WEIGHTS
 net_data = load("bvlc_alexnet.npy").item()
 
