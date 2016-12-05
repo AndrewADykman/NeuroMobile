@@ -49,7 +49,7 @@ def main():
     rospy.init_node('neuro_drive');
     
     global TwPub
-    TwPub = rospy.Publisher('/husky_velocity_controller/cmd_vel', Twist);
+    TwPub = rospy.Publisher('/NN_out/cmd_vel', Twist);
     ImSub = rospy.Subscriber("/camera/image_raw",Image, image_cb, queue_size = 1);
 
 

@@ -2,6 +2,11 @@ from numpy import *
 import tensorflow as tf
 import pickle
 
+"""Predictor class -- implements the entire graph structure of alexnet + ournet.py for the purpose
+of calculating predictions, given the loaded alexnet and ournet weights.
+
+TODO -- make this a lot better"""
+
 class Predictor:
 
     def __init__(self, net_data, dnn_net_data):
@@ -126,21 +131,21 @@ class Predictor:
         maxpool_flat = tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))])
 
         # run it through several FC dense layers
-        fc6W = dnn_net_data['fc6W']
-        fc6b = dnn_net_data['fc6b']
+        fc6W = tf.Variable(dnn_net_data['fc6'][0])
+        fc6b = tf.Variable(dnn_net_data['fc6'][1])
 
         fc6 = tf.nn.relu(tf.matmul(maxpool_flat, fc6W) + fc6b)
 
-        fc7W = dnn_net_data['fc7W']
-        fc7b = dnn_net_data['fc7b']
+        fc7W = tf.Variable(dnn_net_data['fc7'][0])
+        fc7b = tf.Variable(dnn_net_data['fc7'][1])
 
         fc7 = tf.nn.relu(tf.matmul(fc6, fc7W) + fc7b)
 
         # final readout layer (2 output nodes, dYaw and dx)
-        y_W = dnn_net_data['y_W']
-        y_B = dnn_net_data['y_B']
+        y_W = tf.Variable(dnn_net_data['y'][0])
+        y_B = tf.Variable(dnn_net_data['y'][1])
 
-        self.prediction = tf.tanh(tf.matmul(fc7, y_W) + y_B)
+        self.prediction = tf.matmul(fc7, y_W) + y_B
 
         self.sess = tf.Session()
         self.sess.run(tf.initialize_all_variables())
@@ -170,35 +175,28 @@ class Predictor:
         return self.sess.close()
 
 
-
+#MAIN SESSION------------------------------------
+'''
 #LOAD ALEXNET WEIGHTS
 net_data = load("bvlc_alexnet.npy").item()
 
 #LOAD OUR WEIGHTS
-sess = tf.Session()
-new_saver = tf.train.import_meta_graph('dnn_model.meta')
-new_saver.restore(sess, tf.train.latest_checkpoint('./'))
-all_vars = tf.trainable_variables()
-
-dnn_net_data = {}
-dnn_net_data['fc6W'] = all_vars[0]
-dnn_net_data['fc6b'] = all_vars[1]
-dnn_net_data['fc7W'] = all_vars[2]
-dnn_net_data['fc7b'] = all_vars[3]
-dnn_net_data['y_W'] = all_vars[4]
-dnn_net_data['y_B'] = all_vars[5]
-
-sess.close()
+dnn_net_data = load("dnn_net_data.npy").item()
 
 #import images from ROS
-with open('images2.pickle','r') as f:
+with open('images.pickle','r') as f:
   images2 = pickle.load(f)
 
-with open('twist2.pickle','r') as g:
+with open('twist.pickle','r') as g:
   twist2 = pickle.load(g)
+
+images2 = images2
+twist2 = asarray(twist2) * 100
 
 #create our thing
 my_pred = Predictor(net_data, dnn_net_data)
+
+print shape(images2)
 
 for i in range(0, len(images2)):
     image = list()
@@ -210,4 +208,4 @@ for i in range(0, len(images2)):
 my_pred.close_session()
 
 
-
+'''

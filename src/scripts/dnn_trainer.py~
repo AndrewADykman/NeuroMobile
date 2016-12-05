@@ -1,32 +1,61 @@
 import tensorflow as tf
 import numpy as np
 import pickle
+import argparse
+import atexit
 
 # DEFINE HYPERPARAMETERS
+parser = argparse.ArgumentParser(description='take training arguments.')
+parser.add_argument('--num-epochs', type=int, default=10, help='The number of epochs')
+parser.add_argument('--keep-prob', type=float, default=.75, help='Probability of an edge being kept in the network each training iteration')
+args = parser.parse_args()
+
+@atexit.register
+def saveData():
+
+	print 'saving data...'
+
+	np.save('error_rates_sigmoid.npy', error_rates)
+
+	dnn_net_data = {}
+	dnn_net_data['fc6'] = []
+	dnn_net_data['fc6'].append(fc6W.eval(sess))
+	dnn_net_data['fc6'].append(fc6b.eval(sess))
+
+	dnn_net_data['fc7'] = []
+	dnn_net_data['fc7'].append(fc7W.eval(sess))
+	dnn_net_data['fc7'].append(fc7b.eval(sess))
+
+	dnn_net_data['y'] = []
+	dnn_net_data['y'].append(y_W.eval(sess))
+	dnn_net_data['y'].append(y_B.eval(sess))
+
+	np.save('dnn_net_data.npy', dnn_net_data)
 
 #keep batch size small
-miniBatchSize = 5
+miniBatchSize = 10
 
-num_epochs = 10
+num_epochs = args.num_epochs
 
-keep_probability = 0.9
+keep_probability = args.keep_prob
 
 output_num = 1
 
 # OPEN PICKLED OUTPUT FROM ALEXNET
-with open('CNN_filters.pickle','rb') as f:
+with open('CNN_filters_train_mamba.pickle','rb') as f:
     CNN_data = pickle.load(f)
 
-with open('twist.pickle','r') as g:
+with open('train_twists.pickle','r') as g:
     twist = pickle.load(g)
 
 print "finished pickles"
 
 #SMALL SUBSET OF DATA TEST
-# CNN_data = CNN_data[50:71]
-# twist = twist[50:71]
+CNN_data = CNN_data[50:71]
+twist = twist[50:71]
 
 #get some dimensions
+CNN_data = np.asarray(CNN_data)
 num_batches = CNN_data.shape[0]
 image_dim = CNN_data.shape[1:]
 flatten_length = int(np.prod(CNN_data.shape[1:]))
@@ -55,14 +84,18 @@ y_data = tf.placeholder(tf.float32, shape=[None, output_num])
 
 #run it through several FC dense layers
 fc6_hidden_size = 1000
+global fc6W 
 fc6W = weight_variable([flatten_length, fc6_hidden_size], 'fc6W')
+global fc6b 
 fc6b = bias_variable([fc6_hidden_size], 'fc6b')
 
 fc6 = tf.nn.relu(tf.matmul(x_flat, fc6W) + fc6b)#I think we should do this like in alexnet
 
 #run it through several FC dense layers
 fc7_hidden_size = 100
+global fc7W 
 fc7W = weight_variable([fc6_hidden_size, fc7_hidden_size], 'fc7W')
+global fc7b 
 fc7b = bias_variable([fc7_hidden_size], 'fc7b')
 
 fc7 = tf.nn.relu(tf.matmul(fc6, fc7W) + fc7b)#I think we should do this like in alexnet
@@ -72,7 +105,9 @@ keep_prob = tf.placeholder(tf.float32)
 fc7_drop = tf.nn.dropout(fc7, keep_prob)
 
 #final readout layer (2 output nodes, dYaw and dx)
+global y_W 
 y_W = weight_variable([fc7_hidden_size, output_num], 'yW')
+global y_B 
 y_B = bias_variable([output_num], 'yB')
 
 y_pred = tf.matmul(fc7_drop, y_W) + y_B
@@ -84,6 +119,7 @@ squared_loss = tf.reduce_mean(tf.square(y_pred - y_data))
 train_step = tf.train.AdamOptimizer(1e-4).minimize(squared_loss)
 
 #start the Tensorflow session and initialize variables
+global sess 
 sess = tf.Session()
 sess.run(tf.initialize_all_variables())
 
@@ -100,6 +136,7 @@ while len(miniBatchNum) < miniBatchSize:
     miniBatchNums.append(num)
     miniBatch.append(ppTD[num])
 """
+global error_rates 
 error_rates = [0.]*num_epochs
 
 for e in range(0, num_epochs):
@@ -129,21 +166,6 @@ print "final predictions:", pred, "correct:", corr
 #saver = tf.train.Saver([fc6W, fc6b, fc7W, fc7b, y_W, y_B])
 #saver.save(sess, 'dnn_model')
 
-np.save('error_rates_sigmoid.npy', error_rates)
 
-dnn_net_data = {}
-dnn_net_data['fc6'] = []
-dnn_net_data['fc6'].append(fc6W.eval(sess))
-dnn_net_data['fc6'].append(fc6b.eval(sess))
-
-dnn_net_data['fc7'] = []
-dnn_net_data['fc7'].append(fc7W.eval(sess))
-dnn_net_data['fc7'].append(fc7b.eval(sess))
-
-dnn_net_data['y'] = []
-dnn_net_data['y'].append(y_W.eval(sess))
-dnn_net_data['y'].append(y_B.eval(sess))
-
-np.save('dnn_net_data.npy', dnn_net_data)
 
 

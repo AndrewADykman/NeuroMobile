@@ -38,23 +38,13 @@ from caffe_classes import class_names
 # IMPORT IMAGES FROM PICKLE FILE (ROS) #########################
 image_dim = (500, 500, 3)
 
-myImages = [];
-myTwists = [];
+with open('train_images.pickle','r') as f:
+  images = pickle.load(f)
 
-for i in range(1,11):
-    filename = 'images' + str(i) + '.pickle';
-    twistname = 'twist' + str(i) + '.pickle';
-	
-    with open(filename,'r') as f:
-        images = pickle.load(f)
+with open('train_twists.pickle','r') as g:
+  twist = pickle.load(g)
 
-    with open(twistname,'r') as g:
-        twist = pickle.load(g)
-    myImages = myImages + images;
-    myTwists = myTwists + twists;
 
-images = myImages; #lol lazy
-twists = myTwists; #yup.
 
 # LOAD PRE-TRAINED WEIGHTS
 net_data = load("bvlc_alexnet.npy").item()
@@ -222,12 +212,21 @@ sess = tf.Session()
 sess.run(init)
 
 t = time.time()
-output = sess.run(maxpool5, feed_dict={x: images})
+j = 0
+output = []
+for i in range(300, len(images), 300):
+    if i + 300 >= len(images): i = len(images)
+    image_partition = images[j:i]
+    output_partition = sess.run(maxpool5, feed_dict={x:image_partition})
+    output.extend(output_partition)
+    print i
+    j = i
+ 
 ################################################################################
 
 # Output:
-dump_file = open('CNN_filters.pickle', 'wb')
-pickle.dump(output, dump_file)
+with open('CNN_filters_train_mamba.pickle', 'wb') as dump_file:
+    pickle.dump(output, dump_file)
 
 # for input_im_ind in range(output.shape[0]):
 #     inds = argsort(output)[input_im_ind, :]

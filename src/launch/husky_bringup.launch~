@@ -4,11 +4,11 @@
     <!-- <include file="$(find neuroMobile)/launch/base.urdf.gazebo.launch"/> -->
 
     <include file="$(find neuroMobile)/launch/husky_empty_world.launch">
-	<arg name ="world_name" value="$(find neuroMobile)/worlds/maze13.world"/>
+	<arg name ="world_name" value="$(find neuroMobile)/worlds/maze5.world"/>
     </include>
 
-    <!--<node name="drivers_seat" pkg="rviz" type="rviz" output="screen" args="-d $(find neuroMobile)/rviz/imageStream.rviz"/>-->
+    <node name="drivers_seat" pkg="rviz" type="rviz" output="screen" args="-d $(find neuroMobile)/rviz/imageStream.rviz"/>
 
-    <include file="$(find neuroMobile)/launch/teleop.launch"/>
+    <!-- <include file="$(find neuroMobile)/launch/teleop.launch"/> -->
 
 </launch>
