@@ -6,8 +6,9 @@ import atexit
 
 # DEFINE HYPERPARAMETERS
 parser = argparse.ArgumentParser(description='take training arguments.')
-parser.add_argument('--num-epochs', type=int, default=10, help='The number of epochs')
+parser.add_argument('--num-epochs', type=int, default=300, help='The number of epochs')
 parser.add_argument('--keep-prob', type=float, default=.75, help='Probability of an edge being kept in the network each training iteration')
+parser.add_argument('--mbatch-size', type=int, default=30, help='# of images per minibatch')
 args = parser.parse_args()
 
 @atexit.register
@@ -15,7 +16,7 @@ def saveData():
 
 	print 'saving data...'
 
-	np.save('error_rates_sigmoid.npy', error_rates)
+	np.save('error_rates.npy', error_rates)
 
 	dnn_net_data = {}
 	dnn_net_data['fc6'] = []
@@ -26,6 +27,10 @@ def saveData():
 	dnn_net_data['fc7'].append(fc7W.eval(sess))
 	dnn_net_data['fc7'].append(fc7b.eval(sess))
 
+	dnn_net_data['fc8'] = []
+        dnn_net_data['fc8'].append(fc8W.eval(sess))
+	dnn_net_data['fc8'].append(fc8b.eval(sess))
+
 	dnn_net_data['y'] = []
 	dnn_net_data['y'].append(y_W.eval(sess))
 	dnn_net_data['y'].append(y_B.eval(sess))
@@ -33,13 +38,13 @@ def saveData():
 	np.save('dnn_net_data.npy', dnn_net_data)
 
 #keep batch size small
-miniBatchSize = 10
+miniBatchSize = args.mbatch_size
 
 num_epochs = args.num_epochs
 
 keep_probability = args.keep_prob
 
-output_num = 1
+output_num = 2
 
 # OPEN PICKLED OUTPUT FROM ALEXNET
 with open('CNN_filters_train_mamba.pickle','rb') as f:
@@ -51,8 +56,8 @@ with open('train_twists.pickle','r') as g:
 print "finished pickles"
 
 #SMALL SUBSET OF DATA TEST
-CNN_data = CNN_data[50:71]
-twist = twist[50:71]
+#CNN_data = CNN_data[50:71]
+#twist = twist[50:71]
 
 #get some dimensions
 CNN_data = np.asarray(CNN_data)
@@ -61,7 +66,7 @@ image_dim = CNN_data.shape[1:]
 flatten_length = int(np.prod(CNN_data.shape[1:]))
 
 #convert twist to numpy array, take only yaw
-twist = np.asarray(twist)[:, 1][:,None]
+twist = np.asarray(twist)#[:, 1][:,None]
 twist = twist * 100 #change range from -0.5, 0.5 to -50, 50
 #twist = twist.tolist()
 
@@ -77,13 +82,13 @@ def bias_variable(shape, name):
 #CREATE GRAPH #############
 
 #define our placeholder variables for defining the symbolic expression to diff
-x = tf.placeholder(tf.float32, shape=(None, 14, 14, 256))
+x = tf.placeholder(tf.float32, shape=(None,) + image_dim)
 x_flat = tf.reshape(x, [-1, int(np.prod(x.get_shape()[1:]))])
 
 y_data = tf.placeholder(tf.float32, shape=[None, output_num])
 
 #run it through several FC dense layers
-fc6_hidden_size = 1000
+fc6_hidden_size = 12000
 global fc6W 
 fc6W = weight_variable([flatten_length, fc6_hidden_size], 'fc6W')
 global fc6b 
@@ -92,7 +97,7 @@ fc6b = bias_variable([fc6_hidden_size], 'fc6b')
 fc6 = tf.nn.relu(tf.matmul(x_flat, fc6W) + fc6b)#I think we should do this like in alexnet
 
 #run it through several FC dense layers
-fc7_hidden_size = 100
+fc7_hidden_size = 7000
 global fc7W 
 fc7W = weight_variable([fc6_hidden_size, fc7_hidden_size], 'fc7W')
 global fc7b 
@@ -100,17 +105,26 @@ fc7b = bias_variable([fc7_hidden_size], 'fc7b')
 
 fc7 = tf.nn.relu(tf.matmul(fc6, fc7W) + fc7b)#I think we should do this like in alexnet
 
+#run it through several FC dense layers
+fc8_hidden_size = 4000
+global fc8W 
+fc8W = weight_variable([fc7_hidden_size, fc8_hidden_size], 'fc8W')
+global fc8b 
+fc8b = bias_variable([fc8_hidden_size], 'fc8b')
+
+fc8 = tf.nn.relu(tf.matmul(fc7, fc8W) + fc8b)#I think we should do this like in alexnet
+
 #apply dropout
 keep_prob = tf.placeholder(tf.float32)
-fc7_drop = tf.nn.dropout(fc7, keep_prob)
+fc8_drop = tf.nn.dropout(fc8, keep_prob)
 
 #final readout layer (2 output nodes, dYaw and dx)
 global y_W 
-y_W = weight_variable([fc7_hidden_size, output_num], 'yW')
+y_W = weight_variable([fc8_hidden_size, output_num], 'yW')
 global y_B 
 y_B = bias_variable([output_num], 'yB')
 
-y_pred = tf.matmul(fc7_drop, y_W) + y_B
+y_pred = tf.matmul(fc8_drop, y_W) + y_B
 
 #define loss function
 squared_loss = tf.reduce_mean(tf.square(y_pred - y_data))

@@ -1,0 +1,1766 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+<world name="default">
+<include>
+<uri>model://ground_plane</uri>
+</include>
+<include>
+<uri>model://sun</uri>
+</include>
+<include>
+<uri>model://jersey_barrier</uri>
+<name>jersey_barrier_0</name>
+<pose>0 -2 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_1</name>
+  <pose>2 0 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_2</name>
+  <pose>-2 0 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_3</name>
+  <pose>2 4 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_4</name>
+  <pose>-2 4 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_5</name>
+  <pose>2 8 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_6</name>
+  <pose>-2 8 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_7</name>
+  <pose>2 12 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_8</name>
+  <pose>-2 12 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_9</name>
+  <pose>2 16 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_10</name>
+  <pose>-2 16 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_11</name>
+  <pose>2 20 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_12</name>
+  <pose>-2 20 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_13</name>
+  <pose>2 24 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_14</name>
+  <pose>-2 24 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_15</name>
+  <pose>2 28 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_16</name>
+  <pose>-2 28 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_17</name>
+  <pose>2 32 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_18</name>
+  <pose>-2 32 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_19</name>
+  <pose>2 36 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_20</name>
+  <pose>-2 36 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_21</name>
+  <pose>2 40 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_22</name>
+  <pose>-2 40 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_23</name>
+  <pose>2 44 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_24</name>
+  <pose>-2 44 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_25</name>
+  <pose>2 48 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_26</name>
+  <pose>-2 48 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_27</name>
+  <pose>2 52 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_28</name>
+  <pose>-2 52 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_29</name>
+  <pose>2 56 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_30</name>
+  <pose>-2 56 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_31</name>
+  <pose>2 60 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_32</name>
+  <pose>-2 60 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_33</name>
+  <pose>2 64 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_34</name>
+  <pose>-2 64 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_35</name>
+  <pose>2 68 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_36</name>
+  <pose>-2 68 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_37</name>
+  <pose>2 72 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_38</name>
+  <pose>-2 72 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_39</name>
+  <pose>2 76 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_40</name>
+  <pose>-2 76 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_41</name>
+  <pose>2 80 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_42</name>
+  <pose>-2 80 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_43</name>
+  <pose>2 84 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_44</name>
+  <pose>-2 84 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_45</name>
+  <pose>2 88 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_46</name>
+  <pose>-2 88 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_47</name>
+  <pose>2 92 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_48</name>
+  <pose>-2 92 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_49</name>
+  <pose>2 96 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_50</name>
+  <pose>-2 96 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_51</name>
+  <pose>2 100 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_52</name>
+  <pose>-2 100 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_53</name>
+  <pose>2 104 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_54</name>
+  <pose>-2 104 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_55</name>
+  <pose>2 108 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_56</name>
+  <pose>-2 108 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_57</name>
+  <pose>2 112 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_58</name>
+  <pose>-2 112 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_59</name>
+  <pose>2 116 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_60</name>
+  <pose>-2 116 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_61</name>
+  <pose>2 120 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_62</name>
+  <pose>-2 120 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_63</name>
+  <pose>2 124 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_64</name>
+  <pose>-2 124 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_65</name>
+  <pose>2 128 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_66</name>
+  <pose>-2 128 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_67</name>
+  <pose>2 132 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_68</name>
+  <pose>-2 132 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_69</name>
+  <pose>2 136 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_70</name>
+  <pose>-2 136 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_71</name>
+  <pose>2 140 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_72</name>
+  <pose>-2 140 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_73</name>
+  <pose>2 144 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_74</name>
+  <pose>-2 144 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_75</name>
+  <pose>2 148 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_76</name>
+  <pose>-2 148 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_77</name>
+  <pose>2 152 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_78</name>
+  <pose>-2 152 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_79</name>
+  <pose>2 156 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_80</name>
+  <pose>-2 156 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_81</name>
+  <pose>2 160 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_82</name>
+  <pose>-2 160 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_83</name>
+  <pose>2 164 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_84</name>
+  <pose>-2 164 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_85</name>
+  <pose>2 168 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_86</name>
+  <pose>-2 168 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_87</name>
+  <pose>2 172 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_88</name>
+  <pose>-2 172 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_89</name>
+  <pose>2 176 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_90</name>
+  <pose>-2 176 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_91</name>
+  <pose>2 180 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_92</name>
+  <pose>-2 180 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_93</name>
+  <pose>2 184 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_94</name>
+  <pose>-2 184 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_95</name>
+  <pose>2 188 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_96</name>
+  <pose>-2 188 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_97</name>
+  <pose>2 192 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_98</name>
+  <pose>-2 192 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_99</name>
+  <pose>2 196 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_100</name>
+  <pose>-2 196 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_101</name>
+  <pose>2 200 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_102</name>
+  <pose>-2 200 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_103</name>
+  <pose>2 204 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_104</name>
+  <pose>-2 204 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_105</name>
+  <pose>2 208 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_106</name>
+  <pose>-2 208 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_107</name>
+  <pose>2 212 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_108</name>
+  <pose>-2 212 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_109</name>
+  <pose>2 216 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_110</name>
+  <pose>-2 216 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_111</name>
+  <pose>2 220 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_112</name>
+  <pose>-2 220 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_113</name>
+  <pose>2 224 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_114</name>
+  <pose>-2 224 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_115</name>
+  <pose>2 228 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_116</name>
+  <pose>-2 228 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_117</name>
+  <pose>2 232 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_118</name>
+  <pose>-2 232 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_119</name>
+  <pose>2 236 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_120</name>
+  <pose>-2 236 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_121</name>
+  <pose>2 240 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_122</name>
+  <pose>-2 240 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_123</name>
+  <pose>2 244 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_124</name>
+  <pose>-2 244 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_125</name>
+  <pose>2 248 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_126</name>
+  <pose>-2 248 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_127</name>
+  <pose>2 252 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_128</name>
+  <pose>-2 252 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_129</name>
+  <pose>2 256 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_130</name>
+  <pose>-2 256 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_131</name>
+  <pose>2 260 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_132</name>
+  <pose>-2 260 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_133</name>
+  <pose>2 264 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_134</name>
+  <pose>-2 264 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_135</name>
+  <pose>2 268 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_136</name>
+  <pose>-2 268 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_137</name>
+  <pose>2 272 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_138</name>
+  <pose>-2 272 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_139</name>
+  <pose>2 276 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_140</name>
+  <pose>-2 276 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_141</name>
+  <pose>2 280 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_142</name>
+  <pose>-2 280 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_143</name>
+  <pose>2 284 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_144</name>
+  <pose>-2 284 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_145</name>
+  <pose>2 288 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_146</name>
+  <pose>-2 288 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_147</name>
+  <pose>2 292 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_148</name>
+  <pose>-2 292 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_149</name>
+  <pose>2 296 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_150</name>
+  <pose>-2 296 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_151</name>
+  <pose>2 300 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_152</name>
+  <pose>-2 300 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_153</name>
+  <pose>2 304 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_154</name>
+  <pose>-2 304 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_155</name>
+  <pose>2 308 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_156</name>
+  <pose>-2 308 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_157</name>
+  <pose>2 312 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_158</name>
+  <pose>-2 312 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_159</name>
+  <pose>2 316 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_160</name>
+  <pose>-2 316 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_161</name>
+  <pose>2 320 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_162</name>
+  <pose>-2 320 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_163</name>
+  <pose>2 324 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_164</name>
+  <pose>-2 324 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_165</name>
+  <pose>2 328 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_166</name>
+  <pose>-2 328 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_167</name>
+  <pose>2 332 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_168</name>
+  <pose>-2 332 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_169</name>
+  <pose>2 336 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_170</name>
+  <pose>-2 336 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_171</name>
+  <pose>2 340 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_172</name>
+  <pose>-2 340 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_173</name>
+  <pose>2 344 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_174</name>
+  <pose>-2 344 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_175</name>
+  <pose>2 348 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_176</name>
+  <pose>-2 348 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_177</name>
+  <pose>2 352 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_178</name>
+  <pose>-2 352 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_179</name>
+  <pose>2 356 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_180</name>
+  <pose>-2 356 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_181</name>
+  <pose>2 360 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_182</name>
+  <pose>-2 360 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_183</name>
+  <pose>2 364 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_184</name>
+  <pose>-2 364 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_185</name>
+  <pose>2 368 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_186</name>
+  <pose>-2 368 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_187</name>
+  <pose>2 372 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_188</name>
+  <pose>-2 372 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_189</name>
+  <pose>2 376 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_190</name>
+  <pose>-2 376 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_191</name>
+  <pose>2 380 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_192</name>
+  <pose>-2 380 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_193</name>
+  <pose>2 384 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_194</name>
+  <pose>-2 384 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_195</name>
+  <pose>2 388 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_196</name>
+  <pose>-2 388 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_197</name>
+  <pose>2 392 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_198</name>
+  <pose>-2 392 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_199</name>
+  <pose>2 396 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_200</name>
+  <pose>-2 396 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_201</name>
+  <pose>2 400 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://jersey_barrier</uri>
+  <name>jersey_barrier_202</name>
+  <pose>-2 400 0 0 0 1.5708</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_1</name>
+  <pose>-1 4 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_2</name>
+  <pose>0 4 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_3</name>
+  <pose>-1 8 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_4</name>
+  <pose>0 8 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_5</name>
+  <pose>-1 12 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_6</name>
+  <pose>1 12 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_7</name>
+  <pose>1 16 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_8</name>
+  <pose>0 20 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_9</name>
+  <pose>1 20 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_10</name>
+  <pose>1 24 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_11</name>
+  <pose>-1 28 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_12</name>
+  <pose>1 28 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_13</name>
+  <pose>0 32 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_14</name>
+  <pose>1 32 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_15</name>
+  <pose>1 36 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_16</name>
+  <pose>-1 40 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_17</name>
+  <pose>0 40 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_18</name>
+  <pose>1 44 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_19</name>
+  <pose>-1 48 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_20</name>
+  <pose>1 48 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_21</name>
+  <pose>0 52 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_22</name>
+  <pose>0 56 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_23</name>
+  <pose>1 56 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_24</name>
+  <pose>1 60 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_25</name>
+  <pose>1 64 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_26</name>
+  <pose>1 68 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_27</name>
+  <pose>-1 72 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_28</name>
+  <pose>-1 76 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_29</name>
+  <pose>0 76 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_30</name>
+  <pose>1 80 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_31</name>
+  <pose>0 84 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_32</name>
+  <pose>-1 88 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_33</name>
+  <pose>0 88 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_34</name>
+  <pose>0 92 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_35</name>
+  <pose>1 92 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_36</name>
+  <pose>1 96 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_37</name>
+  <pose>0 100 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_38</name>
+  <pose>0 104 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_39</name>
+  <pose>0 108 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_40</name>
+  <pose>-1 112 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_41</name>
+  <pose>-1 116 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_42</name>
+  <pose>1 116 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_43</name>
+  <pose>-1 120 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_44</name>
+  <pose>1 124 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_45</name>
+  <pose>0 128 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_46</name>
+  <pose>0 132 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_47</name>
+  <pose>1 132 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_48</name>
+  <pose>-1 136 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_49</name>
+  <pose>0 136 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_50</name>
+  <pose>-1 140 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_51</name>
+  <pose>-1 144 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_52</name>
+  <pose>-1 148 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_53</name>
+  <pose>-1 152 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_54</name>
+  <pose>-1 156 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_55</name>
+  <pose>1 156 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_56</name>
+  <pose>-1 160 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_57</name>
+  <pose>-1 164 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_58</name>
+  <pose>1 164 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_59</name>
+  <pose>0 168 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_60</name>
+  <pose>1 168 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_61</name>
+  <pose>1 172 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_62</name>
+  <pose>0 176 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_63</name>
+  <pose>0 180 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_64</name>
+  <pose>1 180 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_65</name>
+  <pose>0 184 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_66</name>
+  <pose>1 184 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_67</name>
+  <pose>0 188 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_68</name>
+  <pose>1 188 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_69</name>
+  <pose>0 192 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_70</name>
+  <pose>1 192 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_71</name>
+  <pose>0 196 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_72</name>
+  <pose>-1 200 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_73</name>
+  <pose>1 200 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_74</name>
+  <pose>-1 204 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_75</name>
+  <pose>1 208 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_76</name>
+  <pose>0 212 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_77</name>
+  <pose>1 212 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_78</name>
+  <pose>0 216 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_79</name>
+  <pose>1 216 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_80</name>
+  <pose>-1 220 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_81</name>
+  <pose>1 220 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_82</name>
+  <pose>-1 224 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_83</name>
+  <pose>0 228 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_84</name>
+  <pose>1 228 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_85</name>
+  <pose>0 232 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_86</name>
+  <pose>0 236 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_87</name>
+  <pose>1 236 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_88</name>
+  <pose>0 240 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_89</name>
+  <pose>1 240 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_90</name>
+  <pose>0 244 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_91</name>
+  <pose>-1 248 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_92</name>
+  <pose>0 252 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_93</name>
+  <pose>1 252 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_94</name>
+  <pose>0 256 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_95</name>
+  <pose>1 260 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_96</name>
+  <pose>0 264 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_97</name>
+  <pose>0 268 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_98</name>
+  <pose>-1 272 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_99</name>
+  <pose>0 276 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_100</name>
+  <pose>1 276 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_101</name>
+  <pose>-1 280 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_102</name>
+  <pose>0 280 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_103</name>
+  <pose>0 284 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_104</name>
+  <pose>1 288 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_105</name>
+  <pose>-1 292 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_106</name>
+  <pose>0 292 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_107</name>
+  <pose>-1 296 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_108</name>
+  <pose>-1 300 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_109</name>
+  <pose>1 300 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_110</name>
+  <pose>0 304 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_111</name>
+  <pose>0 308 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_112</name>
+  <pose>1 312 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_113</name>
+  <pose>0 316 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_114</name>
+  <pose>1 316 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_115</name>
+  <pose>1 320 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_116</name>
+  <pose>0 324 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_117</name>
+  <pose>1 324 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_118</name>
+  <pose>-1 328 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_119</name>
+  <pose>0 328 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_120</name>
+  <pose>0 332 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_121</name>
+  <pose>-1 336 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_122</name>
+  <pose>1 336 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_123</name>
+  <pose>0 340 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_124</name>
+  <pose>1 340 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_125</name>
+  <pose>-1 344 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_126</name>
+  <pose>1 344 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_127</name>
+  <pose>-1 348 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_128</name>
+  <pose>0 348 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_129</name>
+  <pose>-1 352 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_130</name>
+  <pose>1 352 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_131</name>
+  <pose>-1 356 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_132</name>
+  <pose>0 360 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_133</name>
+  <pose>1 360 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_134</name>
+  <pose>-1 364 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_135</name>
+  <pose>0 364 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_136</name>
+  <pose>-1 368 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_137</name>
+  <pose>1 368 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_138</name>
+  <pose>-1 372 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_139</name>
+  <pose>0 376 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_140</name>
+  <pose>1 376 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_141</name>
+  <pose>-1 380 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_142</name>
+  <pose>0 380 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_143</name>
+  <pose>0 384 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_144</name>
+  <pose>1 388 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_145</name>
+  <pose>1 392 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_146</name>
+  <pose>-1 396 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_147</name>
+  <pose>1 396 0 0 0 0</pose>
+</include>
+<include>
+  <uri>model://construction_barrel</uri>
+  <name>Construction Barrel_148</name>
+  <pose>1 400 0 0 0 0</pose>
+</include>
+</world>
+</sdf>

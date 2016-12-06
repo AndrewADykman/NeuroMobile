@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+    <!-- <include file="$(find neuroMobile)/launch/base.urdf.gazebo.launch"/> -->
+
+    <include file="$(find neuroMobile)/launch/husky_empty_world.launch">
+	<arg name ="world_name" value="$(find neuroMobile)/worlds/long_maze1.world"/>
+    </include>
+
+    <node name="drivers_seat" pkg="rviz" type="rviz" output="screen" args="-d $(find neuroMobile)/rviz/imageStream.rviz"/>
+
+    <include file="$(find neuroMobile)/launch/teleop.launch"/>
+
+</launch>

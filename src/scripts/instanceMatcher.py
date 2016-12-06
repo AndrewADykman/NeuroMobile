@@ -12,6 +12,10 @@ import numpy as np
 #define input messages
 twistIn = None;
 imageIn = None;
+X_lin_Z_ang = None;
+twistNew = True;
+picture = None;
+imageNew = True;
 
 #lists on data
 instImage = [];
@@ -19,7 +23,7 @@ instTwist = [];
 
 #timer stuff
 t_last = time.time();
-recordRate = 3; #hz
+recordRate = 6; #hz
 t_step = float(1)/recordRate;
 
 #data dump on exit
@@ -57,7 +61,7 @@ def image_cb(data):
     global picture;
     picture = data.data;
     picture = np.frombuffer(picture, np.uint8);
-    picture = np.reshape(picture,(500,500,3));
+    picture = np.reshape(picture,(250,250,3));
     global imageNew;
     imageNew = True;
 
@@ -69,7 +73,7 @@ def image_cb(data):
 
 #combined result of both callbacks being called 
 def buildInstance():
-
+    print 'Building Instance...'
     instImage.append(picture);
     instTwist.append(X_lin_Z_ang);
 
