@@ -3,7 +3,7 @@ import argparse
 import numpy as np
 
 
-possible_twists = [[.125, -.1],[.125, .1],[.5, -.06],[.5, -.03],[.5, .03],[.5, .06],[1., -.03],[1., 0.],[1., .03]]
+possible_twists = [[.125, -.2],[.125, .2],[.5, -.1],[.5, -.1],[.5, .05],[.5, .1],[1., -.05],[1., 0.],[1., .05]]
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--in-filename', type=str, help="the input filename")
@@ -24,11 +24,8 @@ for twist in twists:
     if dist < best_dist:
       best_dist = dist
       best_twist = i
-  print 'iteration: ' + str(j) + 'b_t: ' + str(best_twist)
   new_twists[j][best_twist] = 1
-  print new_twists[j]
   j += 1
 
-print new_twists
 with open(args.out_filename, 'wb') as f:
   pickle.dump(new_twists, f)

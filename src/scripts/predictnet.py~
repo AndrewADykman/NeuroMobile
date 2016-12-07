@@ -10,8 +10,10 @@ TODO -- make this a lot better"""
 class Predictor:
 
     def __init__(self, net_data, dnn_net_data):
-        image_dim = (250, 250, 3)
-        self.x = tf.placeholder(tf.float32, (None,) + image_dim)
+	#sequence of 5 of 250x250x3 images
+	input_size = (5, 250, 250, 3)
+	#take in a sequence of images
+        self.x = tf.placeholder(tf.float32, input_size)
 
         # conv1
         # conv(11, 11, 96, 4, 4, padding='VALID', name='conv1')
@@ -128,7 +130,7 @@ class Predictor:
 
         ## OURNET PART OF THE GRAPH ##############
         # define our placeholder variables for defining the symbolic expression to diff
-        maxpool_flat = tf.reshape(maxpool5, [-1, int(prod(maxpool5.get_shape()[1:]))])
+        maxpool_flat = tf.expand_dims(tf.reshape(maxpool5, [-1]), 0)
 
         # run it through several FC dense layers
         fc6W = tf.Variable(dnn_net_data['fc6'][0])
@@ -136,21 +138,11 @@ class Predictor:
 
         fc6 = tf.nn.relu(tf.matmul(maxpool_flat, fc6W) + fc6b)
 
-        fc7W = tf.Variable(dnn_net_data['fc7'][0])
-        fc7b = tf.Variable(dnn_net_data['fc7'][1])
-
-        fc7 = tf.nn.relu(tf.matmul(fc6, fc7W) + fc7b)
-
-        fc8W = tf.Variable(dnn_net_data['fc8'][0])
-        fc8b = tf.Variable(dnn_net_data['fc8'][1])
-
-        fc8 = tf.nn.relu(tf.matmul(fc7, fc8W) + fc8b)
-
         # final readout layer (2 output nodes, dYaw and dx)
         y_W = tf.Variable(dnn_net_data['y'][0])
         y_B = tf.Variable(dnn_net_data['y'][1])
 
-        self.prediction = tf.matmul(fc8, y_W) + y_B
+        self.prediction = tf.softmax(tf.matmul(fc6, y_W) + y_B)
 
         self.sess = tf.Session()
         self.sess.run(tf.initialize_all_variables())

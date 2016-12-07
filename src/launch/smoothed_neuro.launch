@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<launch>
+  <node pkg="neuroMobile" type="neuro_drive.py" name="neuroDrive" output="screen"/>
+  
+  <node pkg="neuroMobile" type="twist_repub" name="twist_repub" output="screen">
+  </node>
+</launch>

@@ -6,9 +6,9 @@ import atexit
 
 # DEFINE HYPERPARAMETERS
 parser = argparse.ArgumentParser(description='take training arguments.')
-parser.add_argument('--num-epochs', type=int, default=300, help='The number of epochs')
-parser.add_argument('--keep-prob', type=float, default=.75, help='Probability of an edge being kept in the network each training iteration')
-parser.add_argument('--seq-size', type=int, default=30, help='# of images of a sequence')
+parser.add_argument('--num-epochs', type=int, default=1000, help='The number of epochs')
+parser.add_argument('--keep-prob', type=float, default=.5, help='Probability of an edge being kept in the network each training iteration')
+parser.add_argument('--seq-size', type=int, default=5, help='# of images of a sequence')
 args = parser.parse_args()
 
 @atexit.register
@@ -40,10 +40,10 @@ keep_probability = args.keep_prob
 output_num = 9
 
 # OPEN PICKLED OUTPUT FROM ALEXNET
-with open('CNN_filters_train.pickle','rb') as f:
+with open('CNN_filtered_train.pickle','rb') as f:
     CNN_data = pickle.load(f)
 
-with open('train_twists.pickle','r') as g:
+with open('twist_1am_trans.pickle','r') as g:
     twist = pickle.load(g)
 
 print "finished pickles"
@@ -56,7 +56,7 @@ print "finished pickles"
 CNN_data = np.asarray(CNN_data)
 num_batches = CNN_data.shape[0]
 image_dim = CNN_data.shape[1:]
-flatten_length = int(np.prod(CNN_data.shape[1:]))
+flatten_length = int(np.prod(CNN_data.shape[1:]))*seq_size
 
 #convert twist to numpy array, take only yaw
 twist = np.asarray(twist)#[:, 1][:,None]
@@ -74,8 +74,7 @@ def bias_variable(shape, name):
 
 #define our placeholder variables for defining the symbolic expression to diff
 #input is a (seq_size, 8, 8, 14) vector or something like that
-x = tf.placeholder(tf.float32, shape=(None,) + image_dim)
-x_flat = tf.reshape(x, [-1]) #smash everything into a flat vector (siamese NN)
+x = tf.placeholder(tf.float32, [None, flatten_length])
 
 y_data = tf.placeholder(tf.float32, shape=[None, output_num])
 
@@ -86,7 +85,7 @@ fc6W = weight_variable([flatten_length, fc6_hidden_size], 'fc6W')
 global fc6b
 fc6b = bias_variable([fc6_hidden_size], 'fc6b')
 
-fc6 = tf.nn.relu(tf.matmul(x_flat, fc6W) + fc6b)#I think we should do this like in alexnet
+fc6 = tf.nn.relu(tf.matmul(x, fc6W) + fc6b)#I think we should do this like in alexnet
 
 #apply dropout
 keep_prob = tf.placeholder(tf.float32)
@@ -124,16 +123,14 @@ for e in range(0, num_epochs):
 
     #for each random index
     for index in p:
-
+	
         #make sure we dont go below 0 in indexing
         if index - seq_size >= 0:
             #each batch is the random index and all seq_size images before that
-            x_batch = CNN_data[(index - seq_size):index]
-            y_batch = twist[(index - seq_size):index]
-
+            x_batch = [np.reshape(np.asarray(CNN_data[(index - seq_size):index]), -1)]
+            y_batch = [twist[index]]
             #train
             _, loss_val = sess.run([train_step, cross_entropy], feed_dict={x: x_batch, y_data: y_batch, keep_prob: keep_probability})
-
 
     print "epoch: ", e, "loss: ", loss_val
     error_rates[e] = loss_val

@@ -38,10 +38,10 @@ from caffe_classes import class_names
 # IMPORT IMAGES FROM PICKLE FILE (ROS) #########################
 image_dim = (250, 250, 3)
 
-with open('train_images.pickle','r') as f:
+with open('images_1am.pickle','r') as f:
   images = pickle.load(f)
 
-with open('train_twists.pickle','r') as g:
+with open('twist_1am.pickle','r') as g:
   twist = pickle.load(g)
 
 # LOAD PRE-TRAINED WEIGHTS
